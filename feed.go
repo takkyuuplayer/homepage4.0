@@ -21,19 +21,31 @@ func (p feedItems) Swap(i, j int) {
 }
 
 func main() {
-	fp := gofeed.NewParser()
-	var items feedItems
-	feed, err := fp.ParseURL("https://takkyuuplayer.blogspot.com/feeds/posts/summary")
-	if err == nil {
-		items = append(items, feed.Items...)
+	atomFeeds := []string{
+		"https://takkyuuplayer.blogspot.com/feeds/posts/summary",
+		"http://takkyuuplayer.hatenablog.com/feed",
 	}
+	var items feedItems
 
-	feed, err = fp.ParseURL("http://takkyuuplayer.hatenablog.com/feed")
-	if err == nil {
-		items = append(items, feed.Items...)
+	ch := make(chan []*gofeed.Item)
+	for _, url := range atomFeeds {
+		go fetch(url, ch)
+	}
+	for range atomFeeds {
+		items = append(items, <-ch...)
 	}
 
 	sort.Sort(items)
 
 	json.NewEncoder(os.Stdout).Encode(items)
+}
+
+func fetch(url string, ch chan<- []*gofeed.Item) {
+	fp := gofeed.NewParser()
+
+	feed, err := fp.ParseURL(url)
+	if err != nil {
+		ch <- nil
+	}
+	ch <- feed.Items
 }
