@@ -7,3 +7,9 @@ build: feed.go
 
 local: build
 	$(MAKE) deploy -C ./deployments/local/
+
+local/test:
+	$(MAKE) test -C ./deployments/local/
+
+lambda/list:
+	aws --endpoint-url=http://localhost:4574 lambda list-functions

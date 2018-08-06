@@ -1,9 +1,15 @@
-version: '3'
+version: "3"
+
 services:
-  app:
-    image: localstack/localstack
+  localstack:
+    image: "localstack/localstack"
     ports:
       - 4567-4580:4567-4580
       - 8080:8080
     environment:
       - DEBUG=1
+      - SERVICES=lambda
+      - LAMBDA_EXECUTOR=docker
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
