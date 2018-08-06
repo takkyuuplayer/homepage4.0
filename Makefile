@@ -1,5 +1,15 @@
-.PHONY: build
+.PHONY: build vendor
 export ROOT=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+
+all: tools vendor
+
+tools:
+	which dep || go get -u github.com/golang/dep/cmd/dep
+	which awscli-local || pip install awscli-local
+
+vendor:
+	dep ensure
+	dep ensure -update
 
 build: feed.go
 	@mkdir -p ${ROOT}/build
