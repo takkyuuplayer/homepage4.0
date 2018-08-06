@@ -1,10 +1,9 @@
 package main
 
 import (
-	"encoding/json"
-	"os"
 	"sort"
 
+	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/mmcdole/gofeed"
 )
 
@@ -20,7 +19,9 @@ func (p feedItems) Swap(i, j int) {
 	p[i], p[j] = p[j], p[i]
 }
 
-func main() {
+var items []*gofeed.Item
+
+func init() {
 	atomFeeds := []string{
 		"https://takkyuuplayer.blogspot.com/feeds/posts/summary",
 		"http://takkyuuplayer.hatenablog.com/feed",
@@ -36,8 +37,6 @@ func main() {
 	}
 
 	sort.Sort(items)
-
-	json.NewEncoder(os.Stdout).Encode(items)
 }
 
 func fetch(url string, ch chan<- []*gofeed.Item) {
@@ -48,4 +47,12 @@ func fetch(url string, ch chan<- []*gofeed.Item) {
 		ch <- nil
 	}
 	ch <- feed.Items
+}
+
+func feed() feedItems {
+	return items
+}
+
+func main() {
+	lambda.Start(feed)
 }

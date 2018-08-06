@@ -14,6 +14,16 @@
   version = "v1.0.0"
 
 [[projects]]
+  name = "github.com/aws/aws-lambda-go"
+  packages = [
+    "lambda",
+    "lambda/messages",
+    "lambdacontext"
+  ]
+  revision = "4d30d0ff60440c2d0480a15747c96ee71c3c53d4"
+  version = "v1.2.0"
+
+[[projects]]
   name = "github.com/mmcdole/gofeed"
   packages = [
     ".",
@@ -68,6 +78,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "602821b15fd20a619369c0f4a2822707ae8745a96d7f96efb3c12a42ca74d765"
+  inputs-digest = "b49348f00956274aa389a4c30fa89188aaaae7217b1b9560de95749ad2da47fc"
   solver-name = "gps-cdcl"
   solver-version = 1
