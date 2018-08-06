@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"encoding/json"
+	"net/http"
 	"sort"
 
 	"github.com/aws/aws-lambda-go/lambda"
@@ -39,6 +41,13 @@ func init() {
 	sort.Sort(items)
 }
 
+type apiGatewayRespone struct {
+	StatusCode      int                `json:"statusCode"`
+	Headers         *map[string]string `json:"headers"`
+	Body            string             `json:"body"`
+	IsBase64Encoded bool               `json:"isBase64Encoded"`
+}
+
 func fetch(url string, ch chan<- []*gofeed.Item) {
 	fp := gofeed.NewParser()
 
@@ -49,8 +58,22 @@ func fetch(url string, ch chan<- []*gofeed.Item) {
 	ch <- feed.Items
 }
 
-func feed(context.Context) (map[string]feedItems, error) {
-	return map[string]feedItems{"data": items}, nil
+func feed(context.Context) (apiGatewayRespone, error) {
+	body, err := json.Marshal(map[string]feedItems{"data": items})
+	if err != nil {
+		return apiGatewayRespone{
+			StatusCode:      http.StatusInternalServerError,
+			Headers:         nil,
+			Body:            err.Error(),
+			IsBase64Encoded: false,
+		}, err
+	}
+	return apiGatewayRespone{
+		StatusCode:      http.StatusOK,
+		Headers:         nil,
+		Body:            string(body),
+		IsBase64Encoded: false,
+	}, nil
 }
 
 func main() {
