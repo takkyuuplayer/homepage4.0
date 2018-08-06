@@ -4,11 +4,11 @@ services:
   localstack:
     image: "localstack/localstack"
     ports:
-      - 4567-4580:4567-4580
+      - 4567-4583:4567-4583
       - 8080:8080
     environment:
       - DEBUG=1
-      - SERVICES=lambda
+      - SERVICES=lambda,s3,apigateway,cloudformation
       - LAMBDA_EXECUTOR=docker
       - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
