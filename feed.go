@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"sort"
 
 	"github.com/aws/aws-lambda-go/lambda"
@@ -13,20 +14,19 @@ func (p feedItems) Len() int {
 	return len(p)
 }
 func (p feedItems) Less(i, j int) bool {
-	return p[i].UpdatedParsed.After(*p[j].UpdatedParsed)
+	return p[i].PublishedParsed.After(*p[j].PublishedParsed)
 }
 func (p feedItems) Swap(i, j int) {
 	p[i], p[j] = p[j], p[i]
 }
 
-var items []*gofeed.Item
+var items feedItems
 
 func init() {
 	atomFeeds := []string{
 		"https://takkyuuplayer.blogspot.com/feeds/posts/summary",
 		"http://takkyuuplayer.hatenablog.com/feed",
 	}
-	var items feedItems
 
 	ch := make(chan []*gofeed.Item)
 	for _, url := range atomFeeds {
@@ -49,8 +49,8 @@ func fetch(url string, ch chan<- []*gofeed.Item) {
 	ch <- feed.Items
 }
 
-func feed() feedItems {
-	return items
+func feed(context.Context) (map[string]feedItems, error) {
+	return map[string]feedItems{"data": items}, nil
 }
 
 func main() {
