@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  backend:
+    docker:
+      - image: circleci/golang
+    environment:
+      GOPATH: /home/circleci/go
+    working_directory: /home/circleci/go/src/github.com/takkyuuplayer/homepage4.0
+    steps:
+      - checkout
+      - run: make
+      - run: make test
+  frontend:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run: make -C web
+      - run: make test -C web
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - backend
+      - frontend
