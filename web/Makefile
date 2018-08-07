@@ -6,4 +6,5 @@ node_modules:
 	yarn install
 
 test:
+	yarn test
 	yarn lint
