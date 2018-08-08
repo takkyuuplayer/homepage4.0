@@ -1,8 +1,9 @@
 import * as React from "react";
 import Helmet from "react-helmet";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "reactstrap";
 import Header from "../components/header";
-import "./index.css";
 
 interface ILayoutProps {
   children: any;
@@ -17,24 +18,26 @@ interface ILayoutProps {
 
 const Layout = ({ children, data }: ILayoutProps) => (
   <div>
-    <Helmet
-      title={data.site.siteMetadata.title}
-      meta={[
-        { name: "description", content: "Sample" },
-        { name: "keywords", content: "sample, something" },
-      ]}
-    />
     <Header siteTitle={data.site.siteMetadata.title} />
-    <div
-      style={{
-        margin: "0 auto",
-        maxWidth: 960,
-        padding: "0px 1.0875rem 1.45rem",
-        paddingTop: 0,
-      }}
-    >
-      {children()}
-    </div>
+    <Container>
+      <Helmet
+        title={data.site.siteMetadata.title}
+        meta={[
+          { name: "description", content: "Sample" },
+          { name: "keywords", content: "sample, something" },
+        ]}
+      />
+      <div
+        style={{
+          margin: "0 auto",
+          maxWidth: 960,
+          padding: "0px 1.0875rem 1.45rem",
+          paddingTop: 0,
+        }}
+      >
+        {children()}
+      </div>
+    </Container>
   </div>
 );
 
