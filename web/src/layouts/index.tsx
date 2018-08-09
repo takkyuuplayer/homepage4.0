@@ -18,7 +18,7 @@ interface ILayoutProps {
 
 const Layout = ({ children, data }: ILayoutProps) => (
   <div>
-    <Header siteTitle={data.site.siteMetadata.title} />
+    <Header />
     <Container>
       <Helmet
         title={data.site.siteMetadata.title}
