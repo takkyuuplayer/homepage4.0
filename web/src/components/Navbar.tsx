@@ -19,7 +19,7 @@ const TOGGLE = "TOGGLE";
 const toggleAction = {
     type: TOGGLE,
 };
-const isOpen = (state = false, action: Action = null) => {
+const isOpen = (state = false, action: Action = { type: undefined }) => {
     switch (action.type) {
         case TOGGLE:
             return !state;
@@ -67,7 +67,7 @@ export default class Navigation extends React.Component {
     private static reducer = combineReducers({
         isOpen,
     });
-    public state = Navigation.reducer(undefined, { type: undefined });
+    public state = Navigation.reducer(undefined, undefined);
     public render() {
         return (
             <div>
