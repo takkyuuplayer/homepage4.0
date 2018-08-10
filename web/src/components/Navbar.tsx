@@ -93,7 +93,9 @@ export default class Navigation extends React.Component {
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
                                     <NavLink
-                                        href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!">
+                                        href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!"
+                                        target="_blank"
+                                    >
                                         Contact
                                     </NavLink>
                                 </NavItem>
