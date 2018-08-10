@@ -15,6 +15,8 @@ import {
 } from "reactstrap";
 import { Action, combineReducers } from "redux";
 
+import Logo from "./Logo";
+
 const TOGGLE = "TOGGLE";
 const toggleAction = {
     type: TOGGLE,
@@ -29,7 +31,7 @@ const isOpen = (state = false, action: Action = { type: undefined }) => {
 };
 
 const Blogs = () => (
-    <UncontrolledDropdown nav inNavbar dark>
+    <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
             Blog
         </DropdownToggle>
@@ -73,7 +75,7 @@ export default class Navigation extends React.Component {
             <div>
                 <Navbar color="dark" dark expand="md">
                     <div className="container">
-                        <NavbarBrand href="/">reactstrap</NavbarBrand>
+                        <NavbarBrand href="/"><Logo /></NavbarBrand>
                         <NavbarToggler onClick={() => this.dispatch(toggleAction)} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="mr-auto" navbar>
