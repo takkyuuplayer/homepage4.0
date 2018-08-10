@@ -80,6 +80,7 @@ export default class Navigation extends React.Component {
                                 <NavItem>
                                     <Link className="nav-link" to="/app/">App</Link>
                                 </NavItem>
+                                <Blogs />
                                 <NavItem>
                                     <Link className="nav-link" to="/math/">Math</Link>
                                 </NavItem>
@@ -88,7 +89,12 @@ export default class Navigation extends React.Component {
                                 </NavItem>
                             </Nav>
                             <Nav className="ml-auto" navbar>
-                                <Blogs />
+                                <NavItem>
+                                    <NavLink
+                                        href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!">
+                                        Contact
+                                    </NavLink>
+                                </NavItem>
                             </Nav>
                         </Collapse>
                     </div>
