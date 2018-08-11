@@ -3,7 +3,12 @@ import Helmet from "react-helmet";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "reactstrap";
+import Footer from "../components/footer";
 import Header from "../components/header";
+
+/* tslint:disable no-var-requires */
+require("./index.css");
+/* tslint:enable no-var-requires */
 
 interface ILayoutProps {
   children: any;
@@ -31,6 +36,7 @@ const Layout = ({ children, data }: ILayoutProps) => (
         {children()}
       </div>
     </Container>
+    <Footer />
   </div>
 );
 

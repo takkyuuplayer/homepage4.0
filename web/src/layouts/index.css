@@ -1,0 +1,13 @@
+.social-icon {
+    font-size: x-large;
+    color: #444;
+    margin-right: 8pt;
+}
+
+.social-icon:hover {
+    color: #4dadf7;
+}
+
+.copy-right {
+    font-size: x-large;
+}
