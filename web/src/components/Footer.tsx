@@ -1,6 +1,7 @@
 import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import { Container, Row } from "reactstrap";
 
 const links = [
@@ -28,7 +29,10 @@ export default () => (
         <Container>
             {links}
             <span className="pull-right">
-                &copy; takkyuuplayer 2004 - {new Date().getFullYear()}
+                &copy;
+                <FormattedMessage id="common.takkyuuplayer" />
+                {" "}
+                2004 - {new Date().getFullYear()}
             </span>
         </Container>
     </footer>
