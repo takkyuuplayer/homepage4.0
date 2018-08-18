@@ -1,5 +1,5 @@
 import * as locales from "../i18n/locales.json";
-import { initialState, setLocaleByBrowserLanguages } from "./i18n";
+import { initialState, setLocale, setLocaleByBrowserLanguages } from "./i18n";
 
 describe("i18n", () => {
     describe("initialState", () => {
@@ -17,6 +17,12 @@ describe("i18n", () => {
         });
         it("handle en-US, ja-JP", () => {
             expect(setLocaleByBrowserLanguages(["en-US", "ja-JP"]).payload.locale).toBe("en");
+        });
+    });
+    describe("setLocale", () => {
+        it("returns updateLocale action", () => {
+            expect(setLocale("ja").payload.locale).toBe("ja");
+            expect(setLocale("en").payload.locale).toBe("en");
         });
     });
 });
