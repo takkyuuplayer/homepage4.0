@@ -1,10 +1,12 @@
 category	key	ja	en
 blog	now	現在	Now
 common	takkyuuplayer	卓球Player	takkyuuplayer
+common	locale	日本語	English
 navigation	blog	ブログ	Blog
 navigation	math	数学	Math
 navigation	app	アプリ	App
 navigation	welcome	ご挨拶	Welcome
+navigation	contact	お問い合わせ	Contact
 welcome	title	ご挨拶	Welcome Message
 welcome	message1	高校からずーーっと更新し続けています。サーバーを	I've updated this website since I was a high school student. It has been hosted at
 welcome	message2	と移動してきました。私のプログラムスキルの発展はこのホームページと共にあったと言ってよいです。	My programming skill has developed along with the website.

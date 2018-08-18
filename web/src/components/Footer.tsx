@@ -30,9 +30,7 @@ export default () => (
             {links}
             <span className="pull-right">
                 &copy;
-                <FormattedMessage id="common.takkyuuplayer" />
-                {" "}
-                2004 - {new Date().getFullYear()}
+                <FormattedMessage id="common.takkyuuplayer" /> 2004 - {new Date().getFullYear()}
             </span>
         </Container>
     </footer>
