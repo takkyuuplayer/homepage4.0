@@ -18,7 +18,7 @@ const links = [
         url: "https://github.com/takkyuuplayer/homepage4.0#homepage-40",
     },
 ].map(({ icon, url }) => (
-    <a href={url} target="_blank" className="social-icon">
+    <a href={url} target="_blank" key={url} className="social-icon">
         <FontAwesomeIcon icon={icon} />
     </a>
 ));
