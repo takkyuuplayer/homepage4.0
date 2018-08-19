@@ -1,5 +1,4 @@
-import { Action } from "redux";
-import { isUndefined } from "util";
+import { ActionType, createAction } from "typesafe-actions";
 
 interface IBlogFeed {
     title: string;
@@ -12,20 +11,13 @@ enum ActionTypes {
     SET_BLOG_FEED = "SET_BLOG_FEED",
 }
 
-export const setBlogFeed = (payload: ReadonlyArray<IBlogFeed>) => ({
-    payload,
-    type: ActionTypes.SET_BLOG_FEED,
-});
+export const setBlogFeed = createAction(ActionTypes.SET_BLOG_FEED, (resolve) =>
+    (payload: IBlogFeed[]) => resolve(payload),
+);
 
-interface IAction extends Action {
-    type: string;
-    payload: ReadonlyArray<IBlogFeed>;
-}
+type BlogAction = ActionType<typeof setBlogFeed>;
 
-export default (state: ReadonlyArray<IBlogFeed> = [], action: IAction | undefined = undefined) => {
-    if (isUndefined(action)) {
-        return state;
-    }
+export default (state: IBlogFeed[] = [], action: BlogAction) => {
     switch (action.type) {
         case ActionTypes.SET_BLOG_FEED:
             return action.payload;
