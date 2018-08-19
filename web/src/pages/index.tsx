@@ -9,6 +9,7 @@ const IndexPage = () => (
   <Row>
     <Col md="8">
       <History />
+      <History />
     </Col>
     <Col md="4">
       <Timeline
