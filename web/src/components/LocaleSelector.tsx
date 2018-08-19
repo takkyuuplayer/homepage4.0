@@ -18,7 +18,7 @@ interface ILocaleSelector {
 const LocaleSelector: React.SFC<ILocaleSelector> = ({ onSetLocale }) => (
     <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-            <FormattedMessage id="common.locale" />
+            <FormattedMessage id="common.current_locale" />
         </DropdownToggle>
         <DropdownMenu right>
             <DropdownItem onClick={() => onSetLocale("ja")}>
