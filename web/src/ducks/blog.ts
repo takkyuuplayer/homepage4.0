@@ -17,11 +17,18 @@ export const setBlogFeed = (payload: ReadonlyArray<IBlogFeed>) => ({
     type: ActionTypes.SET_BLOG_FEED,
 });
 
-export default (state: ReadonlyArray<IBlogFeed> = [], action: Action | undefined = undefined) => {
+interface IAction extends Action {
+    type: string;
+    payload: ReadonlyArray<IBlogFeed>;
+}
+
+export default (state: ReadonlyArray<IBlogFeed> = [], action: IAction | undefined = undefined) => {
     if (isUndefined(action)) {
         return state;
     }
     switch (action.type) {
+        case ActionTypes.SET_BLOG_FEED:
+            return action.payload;
         default:
             return state;
     }

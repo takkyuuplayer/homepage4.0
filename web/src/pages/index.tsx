@@ -3,12 +3,13 @@ import * as React from "react";
 import { Timeline } from "react-twitter-widgets";
 
 import { Col, Row } from "reactstrap";
+import Blog from "../components/Blog";
 import History from "../components/History";
 
 const IndexPage = () => (
   <Row>
     <Col md="8">
-      <History />
+      <Blog />
       <History />
     </Col>
     <Col md="4">

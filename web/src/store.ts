@@ -19,7 +19,7 @@ store.dispatch(setLocaleByBrowserLanguages(navigator.languages));
 (async () => {
     const res = await fetch("https://wudix076af.execute-api.ap-northeast-1.amazonaws.com/Prod/feed");
     const body = await res.json();
-    store.dispatch(setBlogFeed(body));
+    store.dispatch(setBlogFeed(body.data));
 })();
 
 export default store;

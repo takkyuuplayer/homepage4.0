@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormattedDate } from "react-intl";
 
-interface IHistoryItem {
+export interface IHistoryItem {
     date: Date;
     title: string;
     url?: string;
