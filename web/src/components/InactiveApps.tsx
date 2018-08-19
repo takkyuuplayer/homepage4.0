@@ -13,10 +13,13 @@ const appToTableRow = (app: any) => (
         <td className="align-middle"><FormattedHTMLMessage id={`app.${app.title}`} /></td>
         <td className="align-middle">{app.env}</td>
         <td className="align-middle">
-            {app.publishedOn ? <FormattedDate value={app.publishedOn} /> : null}
+            {app.publishedOn ? <FormattedDate value={app.publishedOn}
+                year="numeric" month="2-digit" day="2-digit" /> : null}
         </td>
         <td className="align-middle">
-            {app.version} {app.lastUpdatedOn ? ["(", <FormattedDate value={app.lastUpdatedOn} />, ")"] : null}
+            {app.version} {app.lastUpdatedOn ? ["(", <FormattedDate value={app.lastUpdatedOn}
+                year="numeric" month="2-digit" day="2-digit"
+            />, ")"] : null}
         </td>
     </tr>
 );
