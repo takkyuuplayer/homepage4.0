@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { Alert } from "reactstrap";

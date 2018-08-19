@@ -11,3 +11,23 @@ welcome	title	ご挨拶	Welcome Message
 welcome	message1	高校からずーーっと更新し続けています。サーバーを	I've updated this website since I was a high school student. It has been hosted at
 welcome	message2	と移動してきました。私のプログラムスキルの発展はこのホームページと共にあったと言ってよいです。	My programming skill has developed along with the website.
 welcome	message3	職業としてのWEBエンジニアを選んで以来、 あまり自身のホームページの事は気にかけなくなりました。 とはいえ不意に昔作ったコンテンツを見返しては、 懐かしい思い出に耽っています。	I rarely update any contents, ever since I started a career as a professional web engineer. However, I sometimes come back here and feel nostalgic memories.
+app	PcEnd	どうしてもパソコンを起動してしまう人向け。指定時間帯はパソコンを起動できなくする。 指定時間前から使用を続けていた場合は、そのまま使用続行。	To force your PC shutdown when you boot it in a forbidden duration. You can continue to use PC if you booted before the forbidden time.
+app	Cipher	ファイルの暗号化ソフトです。ＲＳＡで暗号化しているので非常に時間がかかります。 １ＭＢを暗号化するとパスワードにもよりますが約30秒かかります。	To encrypt file. It takes a long time as its algorithm is RSA. It took about 30 sec to encrypt 30MB file.
+app	Gufa	DL-Videoのエンジンを利用して，表示中のページからリンクされている全ての動画をダウンロード。家にインターネットを引いていなかったので、とある種類の動画を大学でこっそりダウンロードするために作った。	To download all movies linked from a web page. I developed this softoware to download a sort of movies in the university secretly, as I didn't have the internet connection at home.
+app	AutoIE	IE を自動で動かす	To automate IE.
+app	mixc	mixiの日記に出てきた単語数，コメント回数などを計算	To count words and comments in a diary in mixi.
+app	mixi_checker	日記の更新，コメントへの返信をメールでお知らせ	To get email notification when your mixi diary gets comments or friends write new entries.
+app	Sta6DView	Stage6勝手にDB" にある動画の存在チェック	To check deadlink in "Stage6勝手にDB" .
+app	go-anki	英英辞典を使って <a href="https://apps.ankiweb.net/">Anki</a> 用の単語帳を生成する	To generate frashcards for <a href="https://apps.ankiweb.net/">Anki</a> with online English-English dictionaries.
+app	github-inviter	github organization への招待リンクを作成	To generate invitation link to github organization.
+app	google-drive-transfer	Google Drive のアカウント移行に	To migrate google accounts.
+app	anki	<a href="https://www.alc.co.jp//">アルク</a> を使って <a href="https://apps.ankiweb.net/">Anki</a> 用の単語帳を生成する	To generate frashcards for <a href="https://apps.ankiweb.net/">Anki</a> with <a href="https://www.alc.co.jp//">アルク</a>.
+app	hackyou	攻撃して学ぶ、ウェブセキュリティ（解答編)	To practice web security through attacks. (Solutions)
+app	hackme	攻撃して学ぶ、ウェブセキュリティ（問題編)	To practice web security through attacks. (Quizes)
+app	title	ソフト名	Title
+app	description	説明	Description
+app	environment	動作確認環境	Environment
+app	published_on	公開日	Published On
+app	version	バージョン	Version
+app	inactive	今は、もう、動かない	Inactive
+app	active	アプリ	Active
