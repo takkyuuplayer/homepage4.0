@@ -68,6 +68,26 @@ const Blogs = () => (
     </UncontrolledDropdown>
 );
 
+const Maths = () => (
+    <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle nav caret>
+            <FormattedMessage id="navigation.math" />
+        </DropdownToggle>
+        <DropdownMenu right>
+            <DropdownItem>
+                <Link className="dropdown-item" to="/math/">
+                    <FormattedMessage id="navigation.math.kingdom" />
+                </Link>
+            </DropdownItem>
+            <DropdownItem>
+                <Link className="dropdown-item" to="/math_class/">
+                    <FormattedMessage id="navigation.math.class" />
+                </Link>
+            </DropdownItem>
+        </DropdownMenu>
+    </UncontrolledDropdown>
+);
+
 export default class Navigation extends React.Component {
     private static reducer = combineReducers({
         isOpen,
@@ -88,11 +108,7 @@ export default class Navigation extends React.Component {
                                     </Link>
                                 </NavItem>
                                 <Blogs />
-                                <NavItem>
-                                    <Link className="nav-link" to="/math/">
-                                        <FormattedMessage id="navigation.math" />
-                                    </Link>
-                                </NavItem>
+                                <Maths />
                                 <NavItem>
                                     <Link className="nav-link" to="/welcome/">
                                         <FormattedMessage id="navigation.welcome" />

@@ -7,6 +7,8 @@ navigation	math	数学	Math
 navigation	app	アプリ	App
 navigation	welcome	ご挨拶	Welcome
 navigation	contact	お問い合わせ	Contact
+navigation	math.kingdom	数学王国	Math Kingdom
+navigation	math.class	数学教室	Math Class
 welcome	title	ご挨拶	Welcome Message
 welcome	message1	高校からずーーっと更新し続けています。サーバーを	I've updated this website since I was a high school student. It has been hosted at
 welcome	message2	と移動してきました。私のプログラムスキルの発展はこのホームページと共にあったと言ってよいです。	My programming skill has developed along with the website.
@@ -31,3 +33,7 @@ app	published_on	公開日	Published On
 app	version	バージョン	Version
 app	inactive	今は、もう、動かない	Inactive
 app	active	アプリ	Active
+math	kingdom	数学王国	Math Kingdom (Japanese Only)
+math	class	数学教室	Math Class (Japanese Only)
+math	kingdom.message	学生時代、数学の問題を作るのが趣味でした	One of my hoppies was making mathematical quizes when I was a student.
+math	answer	答え	Answer
