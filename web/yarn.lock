@@ -8904,6 +8904,13 @@ url-parse@^1.1.8, url-parse@^1.4.3:
     querystringify "^2.0.0"
     requires-port "^1.0.0"
 
+url-parse@unshiftio/url-parse:
+  version "1.4.3"
+  resolved "https://codeload.github.com/unshiftio/url-parse/tar.gz/4e14338495fe58a167de6abda90953459c0828d5"
+  dependencies:
+    querystringify "^2.0.0"
+    requires-port "^1.0.0"
+
 url@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
