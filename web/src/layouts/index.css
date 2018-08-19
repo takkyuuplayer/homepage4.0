@@ -26,16 +26,16 @@ article.history ul {
     padding-left: 20px;
 }
 
-article.history a {
-    display: block;
-    text-decoration: none;
-}
-
-article.history li {
+.history-item {
     display: block;
     margin-bottom: 10px;
 }
 
-span.list-date {
+.history-item a {
+    display: block;
+    text-decoration: none;
+}
+
+span.history-date {
     margin-right: 1em;
 }
