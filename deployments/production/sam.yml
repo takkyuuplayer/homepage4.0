@@ -16,5 +16,9 @@ Resources:
           Properties:
             Path: /feed
             Method: get
+        OptionsResource:
+          Type: Api
+          Properties:
+            Path: /feed
+            Method: options
 
- 

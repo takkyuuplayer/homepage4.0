@@ -1,11 +1,11 @@
 package main
 
 import (
-	"context"
 	"encoding/json"
 	"net/http"
 	"sort"
 
+	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/mmcdole/gofeed"
 )
@@ -41,13 +41,6 @@ func init() {
 	sort.Sort(items)
 }
 
-type apiGatewayRespone struct {
-	StatusCode      int                `json:"statusCode"`
-	Headers         *map[string]string `json:"headers"`
-	Body            string             `json:"body"`
-	IsBase64Encoded bool               `json:"isBase64Encoded"`
-}
-
 func fetch(url string, ch chan<- []*gofeed.Item) {
 	fp := gofeed.NewParser()
 
@@ -58,17 +51,41 @@ func fetch(url string, ch chan<- []*gofeed.Item) {
 	ch <- feed.Items
 }
 
-func feed(context.Context) (apiGatewayRespone, error) {
+func router(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	switch req.HTTPMethod {
+	case "GET":
+		return feed(req)
+	case "OPTIONS":
+		return cors(req)
+	default:
+		return events.APIGatewayProxyResponse{
+			StatusCode: http.StatusMethodNotAllowed,
+			Body:       http.StatusText(http.StatusMethodNotAllowed),
+		}, nil
+	}
+}
+
+func cors(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	return events.APIGatewayProxyResponse{
+		StatusCode: http.StatusNoContent,
+		Headers: map[string]string{
+			"Access-Control-Allow-Methods": "GET",
+			"Access-Control-Allow-Origin":  "*",
+		},
+	}, nil
+}
+
+func feed(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	body, err := json.Marshal(map[string]feedItems{"data": items})
 	if err != nil {
-		return apiGatewayRespone{
+		return events.APIGatewayProxyResponse{
 			StatusCode:      http.StatusInternalServerError,
 			Headers:         nil,
 			Body:            err.Error(),
 			IsBase64Encoded: false,
 		}, err
 	}
-	return apiGatewayRespone{
+	return events.APIGatewayProxyResponse{
 		StatusCode:      http.StatusOK,
 		Headers:         nil,
 		Body:            string(body),
@@ -77,5 +94,5 @@ func feed(context.Context) (apiGatewayRespone, error) {
 }
 
 func main() {
-	lambda.Start(feed)
+	lambda.Start(router)
 }
