@@ -30,6 +30,7 @@
     "react-intl": "^2.4.0",
     "react-intl-redux": "^2.0.2",
     "react-redux": "^5.0.7",
+    "react-twitter-widgets": "^1.7.1",
     "reactstrap": "^6.3.1",
     "redux": "^4.0.0",
     "ts-jest": "^23.1.3",
