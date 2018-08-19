@@ -15,6 +15,8 @@ import {
 } from "reactstrap";
 import { Action, combineReducers } from "redux";
 
+import { FormattedMessage } from "react-intl";
+import LocaleSelector from "./LocaleSelector";
 import Logo from "./Logo";
 
 const TOGGLE = "TOGGLE";
@@ -33,7 +35,7 @@ const isOpen = (state = false, action: Action = { type: undefined }) => {
 const Blogs = () => (
     <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-            Blog
+            <FormattedMessage id="navigation.blog" />
         </DropdownToggle>
         <DropdownMenu right>
             <DropdownItem>
@@ -41,7 +43,8 @@ const Blogs = () => (
                     target="blank"
                     className="dropdown-item"
                     href="http://takkyuuplayer.hatenablog.com/"
-                >Now ~ 2014
+                >
+                    <FormattedMessage id="blog.now" /> ~ 2014
                 </a>
             </DropdownItem>
             <DropdownItem>
@@ -80,25 +83,32 @@ export default class Navigation extends React.Component {
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="mr-auto" navbar>
                                 <NavItem>
-                                    <Link className="nav-link" to="/app/">App</Link>
+                                    <Link className="nav-link" to="/app/">
+                                        <FormattedMessage id="navigation.app" />
+                                    </Link>
                                 </NavItem>
                                 <Blogs />
                                 <NavItem>
-                                    <Link className="nav-link" to="/math/">Math</Link>
+                                    <Link className="nav-link" to="/math/">
+                                        <FormattedMessage id="navigation.math" />
+                                    </Link>
                                 </NavItem>
                                 <NavItem>
-                                    <Link className="nav-link" to="/author/">Author</Link>
+                                    <Link className="nav-link" to="/author/">
+                                        <FormattedMessage id="navigation.welcome" />
+                                    </Link>
                                 </NavItem>
-                            </Nav>
-                            <Nav className="ml-auto" navbar>
                                 <NavItem>
                                     <NavLink
                                         href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!"
                                         target="_blank"
                                     >
-                                        Contact
+                                        <FormattedMessage id="navigation.contact" />
                                     </NavLink>
                                 </NavItem>
+                            </Nav>
+                            <Nav className="ml-auto" navbar>
+                                <LocaleSelector />
                             </Nav>
                         </Collapse>
                     </div>

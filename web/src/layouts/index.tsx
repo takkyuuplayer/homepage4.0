@@ -6,6 +6,9 @@ import { Container } from "reactstrap";
 import Footer from "../components/footer";
 import Header from "../components/header";
 
+import { Provider } from "react-intl-redux";
+import store from "../store";
+
 /* tslint:disable no-var-requires */
 require("./index.css");
 /* tslint:enable no-var-requires */
@@ -22,22 +25,24 @@ interface ILayoutProps {
 }
 
 const Layout = ({ children, data }: ILayoutProps) => (
-  <div>
-    <Header />
-    <Container>
-      <Helmet
-        title={data.site.siteMetadata.title}
-        meta={[
-          { name: "description", content: "Sample" },
-          { name: "keywords", content: "sample, something" },
-        ]}
-      />
-      <div>
-        {children()}
-      </div>
-    </Container>
-    <Footer />
-  </div>
+  <Provider store={store}>
+    <div>
+      <Header />
+      <Container>
+        <Helmet
+          title={data.site.siteMetadata.title}
+          meta={[
+            { name: "description", content: "Sample" },
+            { name: "keywords", content: "sample, something" },
+          ]}
+        />
+        <div>
+          {children()}
+        </div>
+      </Container>
+      <Footer />
+    </div>
+  </Provider>
 );
 
 export default Layout;

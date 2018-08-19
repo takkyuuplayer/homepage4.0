@@ -1,6 +1,7 @@
 import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import { Container, Row } from "reactstrap";
 
 const links = [
@@ -17,7 +18,7 @@ const links = [
         url: "https://github.com/takkyuuplayer/homepage4.0#homepage-40",
     },
 ].map(({ icon, url }) => (
-    <a href={url} target="_blank" className="social-icon">
+    <a href={url} target="_blank" key={url} className="social-icon">
         <FontAwesomeIcon icon={icon} />
     </a>
 ));
@@ -28,7 +29,8 @@ export default () => (
         <Container>
             {links}
             <span className="pull-right">
-                &copy; takkyuuplayer 2004 - {new Date().getFullYear()}
+                &copy;
+                <FormattedMessage id="common.takkyuuplayer" /> 2004 - {new Date().getFullYear()}
             </span>
         </Container>
     </footer>
