@@ -4,7 +4,7 @@ import * as enLocaleData from "react-intl/locale-data/en";
 import * as jaLocaleData from "react-intl/locale-data/ja";
 import { combineReducers, createStore } from "redux";
 import blog, { setBlogFeed } from "./ducks/blog";
-import { initialState, initialState as intl, setLocaleByBrowserLanguages } from "./ducks/i18n";
+import { initialState as intl, setLocaleByBrowserLanguages } from "./ducks/i18n";
 
 addLocaleData([...jaLocaleData, ...enLocaleData]);
 

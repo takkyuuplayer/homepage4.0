@@ -3,7 +3,11 @@ import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import createHistoryItems, { IHistoryItem } from "./HistoryItems";
 
-const Blog: React.SFC<ReadonlyArray<IHistoryItem>> = ({ histories }) => (
+interface IBlog {
+    histories: IHistoryItem[];
+}
+
+const Blog: React.SFC<IBlog> = ({ histories }) => (
     <article className="history">
         <h4><FormattedMessage id="navigation.blog" /></h4>
         <hr />
@@ -18,7 +22,7 @@ const mapStateToProps = (state: any) => ({
         date: new Date(entry.published),
         title: entry.title,
         url: entry.link,
-    })),
+    }) as IHistoryItem),
 });
 
 export default connect(mapStateToProps)(Blog);

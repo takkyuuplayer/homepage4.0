@@ -6,17 +6,17 @@ export interface IHistoryItem {
     title: string;
     url?: string;
 }
-export const HistoryItem: React.SFC<IHistoryItem> = (history) => {
+export const HistoryItem: React.SFC<IHistoryItem> = ({ date, title, url }) => {
     const line = [
         <span key="dummy" className="history-date">
-            <FormattedDate value={history.date} year="numeric" month="2-digit" day="2-digit" />
+            <FormattedDate value={date} year="numeric" month="2-digit" day="2-digit" />
         </span>,
-        history.title,
+        title,
     ];
-    return history.url
-        ? <li className="history-item"><a href={history.url} target="_blank">{line}</a></li>
+    return url
+        ? <li className="history-item"><a href={url} target="_blank">{line}</a></li>
         : <li className="history-item">{line}</li>;
 };
 
-export default (histories: ReadonlyArray<IHistoryItem>) =>
+export default (histories: IHistoryItem[]) =>
     histories.map((history) => <HistoryItem key={JSON.stringify(history)} {...history} />);
