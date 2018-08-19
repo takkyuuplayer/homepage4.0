@@ -94,7 +94,7 @@ export default class Navigation extends React.Component {
                                     </Link>
                                 </NavItem>
                                 <NavItem>
-                                    <Link className="nav-link" to="/author/">
+                                    <Link className="nav-link" to="/welcome/">
                                         <FormattedMessage id="navigation.welcome" />
                                     </Link>
                                 </NavItem>
