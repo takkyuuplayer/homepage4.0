@@ -19,7 +19,7 @@ const IndexPage = () => (
           sourceType: "profile",
         }}
         options={{
-          height: "500",
+          height: "530",
           username: "takkyuuplayer",
         }}
       />

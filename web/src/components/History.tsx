@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedDate } from "react-intl";
+import { FormattedDate, FormattedMessage } from "react-intl";
 import createHistoryItems from "./HistoryItems";
 
 const histories = [
@@ -86,7 +86,7 @@ const histories = [
 
 export default () => (
     <article className="history">
-        <h4>History</h4>
+        <h4><FormattedMessage id="top.history" /></h4>
         <hr />
         <ul className="list-unstyled">
             {createHistoryItems(histories)}
