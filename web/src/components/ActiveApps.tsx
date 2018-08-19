@@ -25,7 +25,7 @@ const ActiveApps = () => (
         </thead>
         <tbody>
             {apps.filter((app) => app.status === AppStatuses.active)
-                .map((app) => appToTableRow(app as IAppData))}
+                .map((app) => appToTableRow(app))}
         </tbody>
     </Table>
 );
