@@ -16,5 +16,3 @@ Resources:
           Properties:
             Path: /feed
             Method: get
-
- 

@@ -19,3 +19,23 @@
 .main {
     padding: 30px 15px 0;
 }
+
+article.history ul {
+    height: 12em;
+    overflow: auto;
+    padding-left: 20px;
+}
+
+.history-item {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.history-item a {
+    display: block;
+    text-decoration: none;
+}
+
+span.history-date {
+    margin-right: 1em;
+}

@@ -1,13 +1,30 @@
 import Link from "gatsby-link";
 import * as React from "react";
+import { Timeline } from "react-twitter-widgets";
+
+import { Col, Row } from "reactstrap";
+import Blog from "../components/Blog";
+import History from "../components/History";
 
 const IndexPage = () => (
-  <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </div>
+  <Row>
+    <Col md="8">
+      <Blog />
+      <History />
+    </Col>
+    <Col md="4">
+      <Timeline
+        dataSource={{
+          screenName: "takkyuuplayer",
+          sourceType: "profile",
+        }}
+        options={{
+          height: "530",
+          username: "takkyuuplayer",
+        }}
+      />
+    </Col>
+  </Row>
 );
 
 export default IndexPage;

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: "takkyuuplayer's playground",
   },
   plugins: [
     'gatsby-plugin-react-helmet',
