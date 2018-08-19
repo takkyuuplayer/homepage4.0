@@ -16,6 +16,7 @@ import {
 import { Action, combineReducers } from "redux";
 
 import { FormattedMessage } from "react-intl";
+import LocaleSelector from "./LocaleSelector";
 import Logo from "./Logo";
 
 const TOGGLE = "TOGGLE";
@@ -97,8 +98,6 @@ export default class Navigation extends React.Component {
                                         <FormattedMessage id="navigation.welcome" />
                                     </Link>
                                 </NavItem>
-                            </Nav>
-                            <Nav className="ml-auto" navbar>
                                 <NavItem>
                                     <NavLink
                                         href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!"
@@ -107,6 +106,9 @@ export default class Navigation extends React.Component {
                                         <FormattedMessage id="navigation.contact" />
                                     </NavLink>
                                 </NavItem>
+                            </Nav>
+                            <Nav className="ml-auto" navbar>
+                                <LocaleSelector />
                             </Nav>
                         </Collapse>
                     </div>
