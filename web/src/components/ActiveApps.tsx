@@ -2,9 +2,9 @@ import * as React from "react";
 import { FormattedDate, FormattedHTMLMessage, FormattedMessage } from "react-intl";
 import { Table } from "reactstrap";
 import AppLink from "../components/AppLink";
-import apps from "../data/apps";
+import apps, { AppStatuses, IAppData } from "../data/apps";
 
-const appToTableRow = (app: any) => (
+const appToTableRow: React.SFC<IAppData> = (app) => (
     <tr key={app.title} >
         <th style={{ padding: "10px" }} className="align-middle" scope="row">
             <AppLink {...app} />
@@ -24,7 +24,8 @@ const ActiveApps = () => (
             </tr>
         </thead>
         <tbody>
-            {apps.filter((app) => app.status === "active").map((app) => appToTableRow(app))}
+            {apps.filter((app) => app.status === AppStatuses.active)
+                .map((app) => appToTableRow(app as IAppData))}
         </tbody>
     </Table>
 );

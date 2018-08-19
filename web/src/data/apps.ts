@@ -19,17 +19,38 @@ hackyou	active	web	https://github.com/takkyuuplayer/hackyou#hackyou				`;
 const rows = tsv.split("\n").map((line: string) => line.trim().split("\t"));
 const header = rows.shift();
 
-const rowToAppRow = (row: typeof rows[0]) => {
+export enum AppStatuses {
+    inactive = "inactive",
+    active = "active",
+}
+export enum AppTypes {
+    standalone = "standalone",
+    web = "web",
+}
+
+export interface IAppData {
+    title: string;
+    status: string;
+    type: string;
+    url: string;
+    publishedOn: Date;
+    version: string;
+    lastUpdatedOn: Date;
+    env: string;
+}
+
+const rowToAppRow = (row: typeof rows[0]): IAppData => {
     const zipped = _.zipObject(header, row);
-    return Object.assign(
-        {},
-        zipped,
-        {
-            lastUpdatedOn: zipped.lastUpdatedOn === "" ? undefined : new Date(zipped.lastUpdatedOn),
-            publishedOn: zipped.publishedOn === "" ? undefined : new Date(zipped.publishedOn),
-            url: zipped.url.startsWith("http") ? zipped.url : `${baseUri}/${zipped.url}`,
-        },
-    );
+    return {
+        env: zipped.env,
+        lastUpdatedOn: zipped.lastUpdatedOn === "" ? undefined : new Date(zipped.lastUpdatedOn),
+        publishedOn: zipped.publishedOn === "" ? undefined : new Date(zipped.publishedOn),
+        status: zipped.status,
+        title: zipped.title,
+        type: zipped.type,
+        url: zipped.url.startsWith("http") ? zipped.url : `${baseUri}/${zipped.url}`,
+        version: zipped.version,
+    };
 };
 
-export default rows.map((row) => _.zipObject(header, row));
+export default rows.map(rowToAppRow);
