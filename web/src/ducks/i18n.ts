@@ -26,12 +26,7 @@ export const setLocaleByBrowserLanguages = (languages: ReadonlyArray<string>) =>
     return setLocale(defaultLocale);
 };
 
-export const setLocale = (locale: string) => {
-    if ("localStorage" in this) {
-        localStorage.setItem("locale", locale);
-    }
-    return updateIntl({
-        locale,
-        messages: locales[locale],
-    });
-};
+export const setLocale = (locale: string) => updateIntl({
+    locale,
+    messages: locales[locale],
+});
