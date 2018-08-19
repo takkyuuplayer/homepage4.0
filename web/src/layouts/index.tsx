@@ -36,9 +36,9 @@ const Layout = ({ children, data }: ILayoutProps) => (
             { name: "keywords", content: "sample, something" },
           ]}
         />
-        <div>
+        <main className="main">
           {children()}
-        </div>
+        </main>
       </Container>
       <Footer />
     </div>

@@ -11,3 +11,11 @@
 .copy-right {
     font-size: x-large;
 }
+
+.well {
+    background-color: #dcdcdc;
+}
+
+.main {
+    padding: 30px 15px 0;
+}
