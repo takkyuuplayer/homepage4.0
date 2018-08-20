@@ -6,8 +6,13 @@ import reducer, { actions } from "./ducks";
 
 addLocaleData([...jaLocaleData, ...enLocaleData]);
 
-const store = createStore(reducer);
-store.dispatch(actions.i18nActions.setLocaleByBrowserLanguages(navigator.languages));
+const cachedState = localStorage.getItem("redux");
+const initialState = cachedState ? JSON.parse(cachedState) : undefined;
+const store = createStore(reducer, initialState);
+
+if (!initialState) {
+    store.subscribe(() => localStorage.setItem("redux", JSON.stringify(store.getState())));
+}
 
 (async () => {
     const res = await fetch("https://wudix076af.execute-api.ap-northeast-1.amazonaws.com/Prod/feed");
