@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedDate, FormattedHTMLMessage, FormattedMessage } from "react-intl";
+import { FormattedHTMLMessage, FormattedMessage } from "react-intl";
 import { Table } from "reactstrap";
 import AppLink from "../components/AppLink";
 import apps, { AppStatuses, IAppData } from "../data/apps";
@@ -14,7 +14,7 @@ const appToTableRow: React.SFC<IAppData> = (app) => (
     </tr>
 );
 
-const ActiveApps = () => (
+const ActiveApps: React.SFC<null> = () => (
     <Table size="sm">
         <thead>
             <tr>

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
+import { RootState } from "../ducks";
 import createHistoryItems, { IHistoryItem } from "./HistoryItems";
 
 interface IBlog {
@@ -17,12 +18,12 @@ const Blog: React.SFC<IBlog> = ({ histories }) => (
     </article>
 );
 
-const mapStateToProps = (state: any) => ({
-    histories: state.blog.map((entry: any) => ({
-        date: new Date(entry.published),
-        title: entry.title,
-        url: entry.link,
-    }) as IHistoryItem),
+const mapStateToProps = (state: RootState) => ({
+    histories: state.blog.map((feed) => ({
+        date: new Date(feed.published),
+        title: feed.title,
+        url: feed.link,
+    })),
 });
 
 export default connect(mapStateToProps)(Blog);

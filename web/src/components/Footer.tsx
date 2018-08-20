@@ -2,7 +2,7 @@ import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-ic
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
-import { Container, Row } from "reactstrap";
+import { Container } from "reactstrap";
 
 const links = [
     {
