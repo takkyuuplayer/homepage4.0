@@ -1,5 +1,5 @@
-import Link from "gatsby-link";
 import * as React from "react";
+import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import {
     DropdownItem,
@@ -7,9 +7,8 @@ import {
     DropdownToggle,
     UncontrolledDropdown,
 } from "reactstrap";
+import { RootActions } from "../ducks";
 import { setLocale } from "../ducks/i18n";
-
-import { FormattedMessage } from "react-intl";
 
 interface ILocaleSelector {
     onSetLocale: (locale: string) => any;
@@ -33,7 +32,7 @@ const LocaleSelector: React.SFC<ILocaleSelector> = ({ onSetLocale }) => (
 
 export default connect(
     undefined,
-    (dispatch) => ({
+    (dispatch: (action: RootActions) => any) => ({
         onSetLocale: (locale: string) => dispatch(setLocale(locale)),
     }),
 )(LocaleSelector);

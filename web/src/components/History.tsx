@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedDate, FormattedMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import createHistoryItems from "./HistoryItems";
 
 const histories = [

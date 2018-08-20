@@ -1,13 +1,16 @@
-import { IntlState } from "react-intl-redux";
-import { updateIntl } from "react-intl-redux";
+import { intlReducer, updateIntl } from "react-intl-redux";
 import * as locales from "../i18n/locales.json";
 
 const defaultLocale = "ja";
-
-export const initialState: IntlState = {
+const initialState = {
     locale: defaultLocale,
     messages: locales[defaultLocale],
 };
+
+export const setLocale = (locale: string) => updateIntl({
+    locale,
+    messages: locales[locale],
+});
 
 export const setLocaleByBrowserLanguages = (languages: ReadonlyArray<string>) => {
     const shortLanguage = [];
@@ -26,7 +29,7 @@ export const setLocaleByBrowserLanguages = (languages: ReadonlyArray<string>) =>
     return setLocale(defaultLocale);
 };
 
-export const setLocale = (locale: string) => updateIntl({
-    locale,
-    messages: locales[locale],
-});
+type IntlState = ReturnType<typeof intlReducer>;
+type IntlAction = ReturnType<typeof updateIntl>;
+
+export default (state: IntlState = initialState, action: IntlAction): IntlState => intlReducer(state, action);

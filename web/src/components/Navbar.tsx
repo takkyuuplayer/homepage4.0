@@ -13,24 +13,28 @@ import {
     NavLink,
     UncontrolledDropdown,
 } from "reactstrap";
-import { Action, combineReducers } from "redux";
+import { combineReducers } from "redux";
 
 import { FormattedMessage } from "react-intl";
+import { ActionType, createAction, getType, StateType } from "typesafe-actions";
 import LocaleSelector from "./LocaleSelector";
 import Logo from "./Logo";
 
-const TOGGLE = "TOGGLE";
-const toggleAction = {
-    type: TOGGLE,
-};
-const isOpen = (state = false, action: Action = { type: undefined }) => {
+const toggleAction = createAction("TOGGLE");
+type localAction = ActionType<typeof toggleAction>;
+
+const isOpen = (state = false, action: localAction) => {
     switch (action.type) {
-        case TOGGLE:
+        case getType(toggleAction):
             return !state;
         default:
             return state;
     }
 };
+const reducer = {
+    isOpen,
+};
+type localState = StateType<typeof reducer>;
 
 const Blogs = () => (
     <UncontrolledDropdown nav inNavbar>
@@ -89,17 +93,15 @@ const Maths = () => (
 );
 
 export default class Navigation extends React.Component {
-    private static reducer = combineReducers({
-        isOpen,
-    });
-    public state = Navigation.reducer(undefined, undefined);
+    private static reducer = combineReducers<localState, localAction>(reducer);
+    public state = Navigation.reducer(undefined, {} as any);
     public render() {
         return (
             <div>
                 <Navbar color="dark" dark expand="md">
                     <div className="container">
-                        <NavbarBrand href="/"><Logo /></NavbarBrand>
-                        <NavbarToggler onClick={() => this.dispatch(toggleAction)} />
+                        <NavbarBrand><Link to="/"><Logo /></Link></NavbarBrand>
+                        <NavbarToggler onClick={() => this.dispatch(toggleAction())} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="mr-auto" navbar>
                                 <NavItem>
@@ -132,7 +134,7 @@ export default class Navigation extends React.Component {
             </div>
         );
     }
-    private dispatch = (action: Action) => {
+    private dispatch = (action: localAction) => {
         this.setState(Navigation.reducer(this.state, action));
     }
 }
