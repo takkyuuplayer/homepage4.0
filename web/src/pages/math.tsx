@@ -1,6 +1,5 @@
 import * as _ from "lodash";
 import * as React from "react";
-
 import { FormattedMessage } from "react-intl";
 import { Table } from "reactstrap";
 
@@ -24,7 +23,7 @@ export default () => (
     <div>
         <h4><FormattedMessage id="math.kingdom" /></h4>
         <p><FormattedMessage id="math.kingdom.message" /></p>
-        <Table striped bordered>
+        <Table bordered>
             {questions}
         </Table>
     </div>

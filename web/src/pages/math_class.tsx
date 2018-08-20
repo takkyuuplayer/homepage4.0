@@ -1,8 +1,5 @@
-import * as _ from "lodash";
 import * as React from "react";
-
 import { FormattedMessage } from "react-intl";
-import { Table } from "reactstrap";
 
 const BaseUri = `https://github.com/takkyuuplayer/homepage/raw/master/public/img/math`;
 

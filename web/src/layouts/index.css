@@ -12,10 +12,6 @@
     font-size: x-large;
 }
 
-.well {
-    background-color: #dcdcdc;
-}
-
 .main {
     padding: 30px 15px 0;
 }
@@ -34,6 +30,10 @@ article.history ul {
 .history-item a {
     display: block;
     text-decoration: none;
+}
+
+.history-item a:hover {
+    font-weight: bold
 }
 
 span.history-date {

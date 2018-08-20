@@ -14,7 +14,7 @@ const appToTableRow: React.SFC<IAppData> = (app) => (
     </tr>
 );
 
-const ActiveApps: React.SFC<null> = () => (
+const ActiveApps = () => (
     <Table size="sm">
         <thead>
             <tr>
