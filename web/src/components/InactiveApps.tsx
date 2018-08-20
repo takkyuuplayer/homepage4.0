@@ -17,7 +17,7 @@ const appToTableRow: React.SFC<IAppData> = (app) => (
                 year="numeric" month="2-digit" day="2-digit" /> : null}
         </td>
         <td className="align-middle">
-            {app.version} {app.lastUpdatedOn ? ["(", <FormattedDate value={app.lastUpdatedOn}
+            {app.version} {app.lastUpdatedOn ? ["(", <FormattedDate key="format" value={app.lastUpdatedOn}
                 year="numeric" month="2-digit" day="2-digit"
             />, ")"] : null}
         </td>
