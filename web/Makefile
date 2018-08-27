@@ -19,7 +19,6 @@ test:
 src/i18n/locales.json:
 	yarn i18n
 
-
 deploy:
 	aws s3 sync public s3://${Bucket}
 	aws cloudfront create-invalidation --distribution-id ${DistributionId} --paths '/*'
