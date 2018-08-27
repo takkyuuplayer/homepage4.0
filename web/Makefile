@@ -21,7 +21,5 @@ src/i18n/locales.json:
 
 
 deploy:
-	yarn build
-	aws s3 mv --recursive public s3://${Bucket}
-	aws s3 ls s3://${Bucket} --recursive | awk -v Bucket="${Bucket}" '{system("aws s3api copy-object --bucket " Bucket " --copy-source " Bucket "/" $$4 " --key " $$4 " --metadata-directive REPLACE --cache-control \"no-cache, no-store\"")}'
+	aws s3 sync public s3://${Bucket}
 	aws cloudfront create-invalidation --distribution-id ${DistributionId} --paths '/*'
