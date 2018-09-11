@@ -1,6 +1,5 @@
+import { withPrefix } from "gatsby-link";
 import * as _ from "lodash";
-
-const baseUri = "https://github.com/takkyuuplayer/homepage/raw/master/public/software";
 
 const tsv = `title	status	type	url	publishedOn	version	lastUpdatedOn	env
 PcEnd	inactive	standalone	pcend.zip	2004/10/06	1.05	2004/12/20	WindowsXP
@@ -48,7 +47,7 @@ const rowToAppRow = (row: typeof rows[0]): IAppData => {
         status: zipped.status,
         title: zipped.title,
         type: zipped.type,
-        url: zipped.url.startsWith("http") ? zipped.url : `${baseUri}/${zipped.url}`,
+        url: zipped.url.startsWith("http") ? zipped.url : withPrefix(`software/${zipped.url}`),
         version: zipped.version,
     };
 };
