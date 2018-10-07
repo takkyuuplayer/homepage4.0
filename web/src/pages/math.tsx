@@ -3,6 +3,7 @@ import * as _ from "lodash";
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { Table } from "reactstrap";
+import Layout from "../components/layout";
 
 const questions = _.range(0, 18).map((num: number) => {
     const key = num < 9 ? "0" + (num + 1) : (num + 1);
@@ -19,11 +20,11 @@ const questions = _.range(0, 18).map((num: number) => {
 });
 
 export default () => (
-    <div>
+    <Layout>
         <h4><FormattedMessage id="math.kingdom" /></h4>
         <p><FormattedMessage id="math.kingdom.message" /></p>
         <Table bordered>
             {questions}
         </Table>
-    </div>
+    </Layout>
 );

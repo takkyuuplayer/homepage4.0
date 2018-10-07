@@ -1,4 +1,4 @@
-import * as locales from "../i18n/locales.json";
+import locales from "../i18n/locales.json";
 import reducer, * as actions from "./i18n";
 
 describe("i18n", () => {
