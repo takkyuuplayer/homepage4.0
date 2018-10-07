@@ -33,7 +33,7 @@ article.history ul {
 }
 
 .history-item a:hover {
-    font-weight: bold
+    text-decoration: underline;
 }
 
 span.history-date {
