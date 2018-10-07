@@ -1,4 +1,4 @@
-import * as program from "commander";
+import program from "commander";
 import * as fs from "fs";
 import Generator from "../src/i18n/generator";
 

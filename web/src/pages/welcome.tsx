@@ -1,6 +1,6 @@
 import * as React from "react";
-import { FormattedMessage } from "react-intl";
-import { Alert } from "reactstrap";
+import { FormattedMessage } from "react-intl"; import { Alert } from "reactstrap";
+import Layout from "../components/layout";
 
 const serverHistory = [
     {
@@ -42,7 +42,7 @@ const Histories = serverHistory.map(
 ).reduce((prev, elem) => prev.length === 0 ? [elem] : [...prev, <span> &rarr; </span>, elem], []);
 
 export default () => (
-    <div>
+    <Layout>
         <h4>
             <FormattedMessage id="welcome.title" />
         </h4>
@@ -50,5 +50,5 @@ export default () => (
         <Alert className="text-center" color="secondary">{Histories}</Alert>
         <p><FormattedMessage id="welcome.message2" /></p>
         <p><FormattedMessage id="welcome.message3" /></p>
-    </div>
+    </Layout>
 );

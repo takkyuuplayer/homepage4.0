@@ -5,8 +5,16 @@
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "esnext",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "jsx": "react",
-    "lib": ["dom", "es2015", "es2017"]
+    "lib": [
+      "dom",
+      "es2015",
+      "es2017"
+    ]
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*"
+  ]
 }

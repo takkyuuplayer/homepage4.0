@@ -1,5 +1,13 @@
 import { intlReducer, updateIntl } from "react-intl-redux";
-import * as locales from "../i18n/locales.json";
+import loc from "../i18n/locales.json";
+
+interface ILocale {
+    [lang: string]: {
+        [key: string]: string;
+    };
+}
+
+const locales = loc as ILocale;
 
 const defaultLocale = "ja";
 const initialState = {
