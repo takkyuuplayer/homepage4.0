@@ -26,6 +26,8 @@
     "gatsby-plugin-typescript": "^2.0.0",
     "jest": "^23.4.2",
     "lodash": "^4.17.10",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
     "react-intl": "^2.4.0",
     "react-intl-redux": "^2.0.2",
