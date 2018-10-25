@@ -19,9 +19,23 @@ jobs:
       - run: make -C web
       - run: make test -C web
       - run: make build -C web
+  deploy:
+    docker:
+      - image: circleci/python:2.7-jessie
+    steps:
+      - run: sudo pip install awscli
+      - run: make production
+
 workflows:
   version: 2
   build_and_test:
     jobs:
       - backend
       - frontend
+      - deploy:
+          requires:
+            - backend
+            - frontend
+          #filters:
+          #  branches:
+          #    only: master
