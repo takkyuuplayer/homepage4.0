@@ -4,8 +4,8 @@ import Helmet from "react-helmet";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { graphql, StaticQuery } from "gatsby";
 import { Container } from "reactstrap";
-import Footer from "./footer";
-import Header from "./header";
+import Footer from "./Footer";
+import Header from "./Header";
 
 import { Provider } from "react-intl-redux";
 import store from "../store";
