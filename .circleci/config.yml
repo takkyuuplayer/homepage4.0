@@ -24,6 +24,7 @@ jobs:
       - image: circleci/python:2.7-jessie
     steps:
       - run: sudo pip install awscli
+      - run: ls
       - run: make production
 
 workflows:
