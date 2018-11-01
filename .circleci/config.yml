@@ -11,6 +11,10 @@ jobs:
       - run: make
       - run: make test
       - run: make build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./build
   frontend:
     docker:
       - image: circleci/node
@@ -19,12 +23,18 @@ jobs:
       - run: make -C web
       - run: make test -C web
       - run: make build -C web
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./web/public
   deploy:
     docker:
       - image: circleci/python:2.7-jessie
     steps:
+      - checkout
+      - attach_workspace:
+          at: .
       - run: sudo pip install awscli
-      - run: ls
       - run: make production
 
 workflows:
