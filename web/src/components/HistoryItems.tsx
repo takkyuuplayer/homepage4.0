@@ -8,9 +8,8 @@ export interface IHistoryItem {
 }
 export const HistoryItem: React.SFC<IHistoryItem> = ({ date, title, url }) => {
     const line = [
-        <span key="dummy" className="history-date">
-            <FormattedDate value={date} year="numeric" month="2-digit" day="2-digit" />
-        </span>,
+        <FormattedDate key="dummy" value={date} year="numeric" month="2-digit" day="2-digit" />,
+        " ",
         title,
     ];
     return url

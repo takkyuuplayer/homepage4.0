@@ -24,3 +24,4 @@ web/src/i18n/locales.json
 # End of https://www.gitignore.io/api/go
 build
 packaged.yml
+deployments/production/lambda.zip

@@ -15,8 +15,9 @@ build: feed.go
 	@mkdir -p ${ROOT}/build
 	GOOS=linux go build -o ${ROOT}/build/feed ./feed.go
 
-production: build
-	$(MAKE) deploy -C ./deployments/production/
+production:
+	$(MAKE) deploy -C ./deployments/production
+	$(MAKE) deploy -C ./web
 
 test:
 	go vet ./...
