@@ -3,6 +3,7 @@ import { FormattedMessage } from "react-intl";
 import createHistoryItems from "./HistoryItems";
 
 const histories = [
+    { date: new Date("2018/11/01"), title: "Homepage Renewal" },
     { date: new Date("2015/02/12"), title: "Web App Bank 公開", url: "http://takkyuuplayer.github.io/" },
     {
         date: new Date("2014/12/01"),
