@@ -28,6 +28,7 @@ func init() {
 	atomFeeds := []string{
 		"https://takkyuuplayer.blogspot.com/feeds/posts/summary",
 		"http://takkyuuplayer.hatenablog.com/feed",
+		"https://medium.com/feed/@takkyuuplayer",
 	}
 
 	ch := make(chan []*gofeed.Item)
