@@ -7,7 +7,6 @@ import {
     DropdownToggle,
     Nav,
     Navbar,
-    NavbarBrand,
     NavbarToggler,
     NavItem,
     NavLink,
@@ -66,6 +65,14 @@ const Blogs = () => (
                     className="dropdown-item"
                     href="http://lang-8.com/44064/journals"
                 >English
+                </a>
+            </DropdownItem>
+            <DropdownItem>
+                <a
+                    target="blank"
+                    className="dropdown-item"
+                    href="https://medium.com/@takkyuuplayer"
+                >English (Tech)
                 </a>
             </DropdownItem>
         </DropdownMenu>
