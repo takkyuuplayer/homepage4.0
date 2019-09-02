@@ -1,10 +1,5 @@
-import { addLocaleData } from "react-intl";
-import * as enLocaleData from "react-intl/locale-data/en";
-import * as jaLocaleData from "react-intl/locale-data/ja";
 import { createStore } from "redux";
 import reducer, { actions } from "./ducks";
-
-addLocaleData([...jaLocaleData, ...enLocaleData]);
 
 let initialState;
 if (typeof localStorage !== `undefined`) {
