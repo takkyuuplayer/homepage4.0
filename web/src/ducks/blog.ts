@@ -11,7 +11,7 @@ enum ActionTypes {
 
 export const setBlogFeed = (feeds: IBlogFeed[]) => ({
   payload: feeds,
-  type: ActionTypes.SET_BLOG_FEED as typeof ActionTypes.SET_BLOG_FEED,
+  type: ActionTypes.SET_BLOG_FEED,
 })
 
 export default (
