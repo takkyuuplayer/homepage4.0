@@ -1,8 +1,6 @@
-import * as React from "react";
-import Navigation from "./Navbar";
+import * as React from 'react'
+import Navigation from './Navbar'
 
-const Header = () => (
-  <Navigation />
-);
+const Header = () => <Navigation />
 
-export default Header;
+export default Header
