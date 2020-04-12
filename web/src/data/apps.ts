@@ -1,5 +1,5 @@
-import { withPrefix } from "gatsby-link";
-import * as _ from "lodash";
+import { withPrefix } from 'gatsby-link'
+import * as _ from 'lodash'
 
 const tsv = `title	status	type	url	publishedOn	version	lastUpdatedOn	env
 PcEnd	inactive	standalone	pcend.zip	2004/10/06	1.05	2004/12/20	WindowsXP
@@ -14,42 +14,46 @@ github-inviter	active	web	https://github.com/takkyuuplayer/github-inviter#github
 google-drive-transfer	active	web	https://github.com/takkyuuplayer/google-drive-transfer#google-drive-transfer
 anki	active	standalone	https://github.com/takkyuuplayer/anki/archive/master.zip
 hackme	active	web	https://github.com/takkyuuplayer/hackme#hackme-
-hackyou	active	web	https://github.com/takkyuuplayer/hackyou#hackyou				`;
-const rows = tsv.split("\n").map((line: string) => line.trim().split("\t"));
-const header = rows.shift();
+hackyou	active	web	https://github.com/takkyuuplayer/hackyou#hackyou				`
+const rows = tsv.split('\n').map((line: string) => line.trim().split('\t'))
+const header = rows.shift()
 
 export enum AppStatuses {
-    inactive = "inactive",
-    active = "active",
+  inactive = 'inactive',
+  active = 'active',
 }
 export enum AppTypes {
-    standalone = "standalone",
-    web = "web",
+  standalone = 'standalone',
+  web = 'web',
 }
 
 export interface IAppData {
-    title: string;
-    status: string;
-    type: string;
-    url: string;
-    publishedOn: Date;
-    version: string;
-    lastUpdatedOn: Date;
-    env: string;
+  title: string
+  status: string
+  type: string
+  url: string
+  publishedOn: Date
+  version: string
+  lastUpdatedOn: Date
+  env: string
 }
 
 const rowToAppRow = (row: typeof rows[0]): IAppData => {
-    const zipped = _.zipObject(header, row);
-    return {
-        env: zipped.env,
-        lastUpdatedOn: zipped.lastUpdatedOn === "" ? undefined : new Date(zipped.lastUpdatedOn),
-        publishedOn: zipped.publishedOn === "" ? undefined : new Date(zipped.publishedOn),
-        status: zipped.status,
-        title: zipped.title,
-        type: zipped.type,
-        url: zipped.url.startsWith("http") ? zipped.url : withPrefix(`software/${zipped.url}`),
-        version: zipped.version,
-    };
-};
+  const zipped = _.zipObject(header, row)
+  return {
+    env: zipped.env,
+    lastUpdatedOn:
+      zipped.lastUpdatedOn === '' ? undefined : new Date(zipped.lastUpdatedOn),
+    publishedOn:
+      zipped.publishedOn === '' ? undefined : new Date(zipped.publishedOn),
+    status: zipped.status,
+    title: zipped.title,
+    type: zipped.type,
+    url: zipped.url.startsWith('http')
+      ? zipped.url
+      : withPrefix(`software/${zipped.url}`),
+    version: zipped.version,
+  }
+}
 
-export default rows.map(rowToAppRow);
+export default rows.map(rowToAppRow)
