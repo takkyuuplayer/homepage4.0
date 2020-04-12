@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl'
 import { Table } from 'reactstrap'
 import AppLink from '../components/AppLink'
 import apps, { AppStatuses, IAppData } from '../data/apps'
@@ -11,7 +11,7 @@ const appToTableRow: React.SFC<IAppData> = (app) => (
     </th>
     <td className="align-middle">{app.title}</td>
     <td className="align-middle">
-      <FormattedMessage id={`app.${app.title}`} />
+      <FormattedHTMLMessage id={`app.${app.title}`} />
     </td>
   </tr>
 )

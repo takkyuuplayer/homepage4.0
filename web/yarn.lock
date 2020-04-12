@@ -932,28 +932,28 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@formatjs/intl-displaynames@^1.2.0", "@formatjs/intl-displaynames@^1.2.2":
+"@formatjs/intl-displaynames@^1.2.0":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-1.2.2.tgz#d0f0edebad96660196d282f609a1169a88a27d4a"
   integrity sha512-qwYxEWJEIplshOMWyLGl2g0d9g/25oQm8GWWCRcagHhv4YIfSJM5+GCTYNJiQImm10pKfEhoV5ezDs0Pr/8CRA==
   dependencies:
     "@formatjs/intl-utils" "^2.2.0"
 
-"@formatjs/intl-listformat@^1.4.1", "@formatjs/intl-listformat@^1.4.2":
+"@formatjs/intl-listformat@^1.4.1":
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-listformat/-/intl-listformat-1.4.3.tgz#3cb75b9a9da60ca54c52dd5a239a24cd448f7a60"
   integrity sha512-FZcc3FSYYimMEm03+1qJzmsm1Vn5qxxkrFe0kqNKujEq3MAK+uL31jpPBiD1EPl22uTD0MHZMuZF55jqd/7R/w==
   dependencies:
     "@formatjs/intl-utils" "^2.2.1"
 
-"@formatjs/intl-relativetimeformat@^4.5.10", "@formatjs/intl-relativetimeformat@^4.5.9":
+"@formatjs/intl-relativetimeformat@^4.5.9":
   version "4.5.11"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-relativetimeformat/-/intl-relativetimeformat-4.5.11.tgz#8161aba04b3dd488a00e2642e007bf5359f8ad34"
   integrity sha512-UdZtBISVHMB1n9dOldnNpEr90/qdHcOXe+EPBAy6pXsqKwL1Nh86PU5/2wJij1wl7lQDrCb2npcYnmScv4uGRg==
   dependencies:
     "@formatjs/intl-utils" "^2.2.1"
 
-"@formatjs/intl-unified-numberformat@^3.2.0", "@formatjs/intl-unified-numberformat@^3.3.0", "@formatjs/intl-unified-numberformat@^3.3.1":
+"@formatjs/intl-unified-numberformat@^3.2.0":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@formatjs/intl-unified-numberformat/-/intl-unified-numberformat-3.3.1.tgz#67b7642b3405e3bf7aaad26862c39a901ba8111f"
   integrity sha512-ZmSxfs7Vt1qnF4AmOuN1XVFK3rXPTxEW4K6mjEJjJkWlgmqSbZeLg7Q46c4GfU6x5dbHVFCaIWsy+U2ko6WkfA==
@@ -6423,7 +6423,7 @@ internal-slot@^1.0.2:
     has "^1.0.3"
     side-channel "^1.0.2"
 
-intl-format-cache@^4.2.21, intl-format-cache@^4.2.22, intl-format-cache@^4.2.23:
+intl-format-cache@^4.2.21:
   version "4.2.23"
   resolved "https://registry.yarnpkg.com/intl-format-cache/-/intl-format-cache-4.2.23.tgz#2c508f64b3bb5862abc71392a4b1696e2b8572d2"
   integrity sha512-a1chSSjN323lnm3f4VWR/+6uyaXgTLII8PkiDeKkC3A+eauUswf/k09iBwDQGlkLg29mZ+zShWdm+YdH+sLY4w==
@@ -6435,13 +6435,6 @@ intl-messageformat-parser@^3.6.4:
   dependencies:
     "@formatjs/intl-unified-numberformat" "^3.2.0"
 
-intl-messageformat-parser@^4.1.1, intl-messageformat-parser@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-4.1.2.tgz#ba49f8b51bbe81ffc13cf94abdcb657a9dcd03e9"
-  integrity sha512-elPjsKkp5L1C60/DPw1jAxmv7ikSpFqmx5NEWeg6DjcZoNr7ZSk+S4Bj9WG5zsJdHF3QfVYr0AbQvDaq6DioqA==
-  dependencies:
-    "@formatjs/intl-unified-numberformat" "^3.3.1"
-
 intl-messageformat@^7.8.4:
   version "7.8.4"
   resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-7.8.4.tgz#c29146a06b9cd26662978a4d95fff2b133e3642f"
@@ -6449,14 +6442,6 @@ intl-messageformat@^7.8.4:
   dependencies:
     intl-format-cache "^4.2.21"
     intl-messageformat-parser "^3.6.4"
-
-intl-messageformat@^8.3.2:
-  version "8.3.4"
-  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-8.3.4.tgz#a3444cceca7793c4993cb133b14d2d443db2fcb2"
-  integrity sha512-mjS/M10RvZ0Zz5ld5+Op3ZFv9gfyfQhCYwg+b++66wBM9vRqiFjCq96psdSJ48VzDd5TqYx3dVxAVeZs+4ZmtQ==
-  dependencies:
-    intl-format-cache "^4.2.23"
-    intl-messageformat-parser "^4.1.2"
 
 into-stream@^3.1.0:
   version "3.1.0"
@@ -9816,7 +9801,7 @@ react-intl-redux@^2.2.0:
   dependencies:
     prop-types "^15.7.2"
 
-react-intl@^3:
+react-intl@3, react-intl@^3:
   version "3.12.1"
   resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-3.12.1.tgz#e9a783ea20302e9da25e4eda59e5593a43d2ec80"
   integrity sha512-cgumW29mwROIqyp8NXStYsoIm27+8FqnxykiLSawWjOxGIBeLuN/+p2srei5SRIumcJefOkOIHP+NDck05RgHg==
@@ -9832,24 +9817,6 @@ react-intl@^3:
     intl-format-cache "^4.2.21"
     intl-messageformat "^7.8.4"
     intl-messageformat-parser "^3.6.4"
-    shallow-equal "^1.2.1"
-
-react-intl@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-4.3.1.tgz#a56ae90aa76bf8cac992606002dc8cbf1276ed7d"
-  integrity sha512-WaF6h1H9b4//csBTZ9JGfrKrceOCIKBjJZMBB0P/E+mjjkR1BJjytH2SEBbPV2bnDDnN6vQQaFz5MhgPfUDMYw==
-  dependencies:
-    "@formatjs/intl-displaynames" "^1.2.2"
-    "@formatjs/intl-listformat" "^1.4.2"
-    "@formatjs/intl-relativetimeformat" "^4.5.10"
-    "@formatjs/intl-unified-numberformat" "^3.3.0"
-    "@formatjs/intl-utils" "^2.2.0"
-    "@types/hoist-non-react-statics" "^3.3.1"
-    "@types/invariant" "^2.2.31"
-    hoist-non-react-statics "^3.3.2"
-    intl-format-cache "^4.2.22"
-    intl-messageformat "^8.3.2"
-    intl-messageformat-parser "^4.1.1"
     shallow-equal "^1.2.1"
 
 react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.9.0:
