@@ -35,10 +35,10 @@ const Layout = ({ children }: ILayoutProps) => (
           <Header />
           <Container>
             <Helmet
-              title="foo"
+              title={data.site.siteMetadata.title}
               meta={[
-                { name: 'description', content: 'Sample' },
-                { name: 'keywords', content: 'sample, something' },
+                { name: 'description', content: 'takkyuuplayer' },
+                { name: 'keywords', content: 'takkyuuplayer' },
               ]}
             />
             <main className="main">{children}</main>
