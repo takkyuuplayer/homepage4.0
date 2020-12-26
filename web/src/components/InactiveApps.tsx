@@ -1,51 +1,54 @@
 import * as React from 'react'
-import {
-  FormattedDate,
-  FormattedMessage,
-  FormattedHTMLMessage,
-} from 'react-intl'
+import { FormattedDate, FormattedMessage, useIntl } from 'react-intl'
 import { Table } from 'reactstrap'
 import AppLink from '../components/AppLink'
 import apps, { IAppData } from '../data/apps'
 
-const appToTableRow: React.SFC<IAppData> = (app) => (
-  <tr key={app.title} className="table-active">
-    <th style={{ padding: '10px' }} className="align-middle" scope="row">
-      <AppLink {...app} />
-    </th>
-    <td className="align-middle">{app.title}</td>
-    <td className="align-middle">
-      <FormattedHTMLMessage id={`app.${app.title}`} />
-    </td>
-    <td className="align-middle">{app.env}</td>
-    <td className="align-middle">
-      {app.publishedOn ? (
-        <FormattedDate
-          value={app.publishedOn}
-          year="numeric"
-          month="2-digit"
-          day="2-digit"
+const appToTableRow: React.FunctionComponent<IAppData> = (app) => {
+  const intl = useIntl()
+  return (
+    <tr key={app.title} className="table-active">
+      <th style={{ padding: '10px' }} className="align-middle" scope="row">
+        <AppLink {...app} />
+      </th>
+      <td className="align-middle">{app.title}</td>
+      <td className="align-middle">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: intl.formatMessage({ id: `app.${app.title}` }),
+          }}
         />
-      ) : null}
-    </td>
-    <td className="align-middle">
-      {app.version}{' '}
-      {app.lastUpdatedOn
-        ? [
-            '(',
-            <FormattedDate
-              key="format"
-              value={app.lastUpdatedOn}
-              year="numeric"
-              month="2-digit"
-              day="2-digit"
-            />,
-            ')',
-          ]
-        : null}
-    </td>
-  </tr>
-)
+      </td>
+      <td className="align-middle">{app.env}</td>
+      <td className="align-middle">
+        {app.publishedOn ? (
+          <FormattedDate
+            value={app.publishedOn}
+            year="numeric"
+            month="2-digit"
+            day="2-digit"
+          />
+        ) : null}
+      </td>
+      <td className="align-middle">
+        {app.version}{' '}
+        {app.lastUpdatedOn
+          ? [
+              '(',
+              <FormattedDate
+                key="format"
+                value={app.lastUpdatedOn}
+                year="numeric"
+                month="2-digit"
+                day="2-digit"
+              />,
+              ')',
+            ]
+          : null}
+      </td>
+    </tr>
+  )
+}
 
 const InactiveApps = () => (
   <Table size="sm">
