@@ -1,20 +1,27 @@
 import * as React from 'react'
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { Table } from 'reactstrap'
 import AppLink from '../components/AppLink'
 import apps, { AppStatuses, IAppData } from '../data/apps'
 
-const appToTableRow: React.SFC<IAppData> = (app) => (
-  <tr key={app.title}>
-    <th style={{ padding: '10px' }} className="align-middle" scope="row">
-      <AppLink {...app} />
-    </th>
-    <td className="align-middle">{app.title}</td>
-    <td className="align-middle">
-      <FormattedHTMLMessage id={`app.${app.title}`} />
-    </td>
-  </tr>
-)
+const appToTableRow: React.FC<IAppData> = (app) => {
+  const intl = useIntl()
+  return (
+    <tr key={app.title}>
+      <th style={{ padding: '10px' }} className="align-middle" scope="row">
+        <AppLink {...app} />
+      </th>
+      <td className="align-middle">{app.title}</td>
+      <td className="align-middle">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: intl.formatMessage({ id: `app.${app.title}` }),
+          }}
+        />
+      </td>
+    </tr>
+  )
+}
 
 const ActiveApps = () => (
   <Table size="sm">

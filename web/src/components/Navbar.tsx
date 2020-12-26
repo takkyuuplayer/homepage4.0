@@ -37,8 +37,6 @@ const isOpen = (state = false, action: localAction) => {
 const reducer = {
   isOpen,
 }
-type localState = typeof reducer
-
 const Blogs = () => (
   <UncontrolledDropdown nav inNavbar>
     <DropdownToggle nav caret>
