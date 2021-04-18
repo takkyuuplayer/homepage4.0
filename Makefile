@@ -5,7 +5,6 @@ export ROOT=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 all:
 
 tools:
-	which dep || go get -u github.com/golang/dep/cmd/dep
 	which awslocal || pip install awscli-local
 
 build: feed.go
