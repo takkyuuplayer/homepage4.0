@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as logo from '../static/img/logo-white.gif'
+import { withPrefix } from 'gatsby-link'
 
 interface ILogoSize {
   width?: string
@@ -7,7 +7,7 @@ interface ILogoSize {
 }
 
 const Logo: React.SFC<ILogoSize> = (props) => (
-  <img src={logo} alt="Logo" {...props} />
+  <img src={withPrefix(`img/logo-white.gif`)} alt="Logo" {...props} />
 )
 
 Logo.defaultProps = {
