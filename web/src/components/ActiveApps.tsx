@@ -13,7 +13,11 @@ const appToTableRow: React.FC<IAppData> = (app) => {
       </th>
       <td className="align-middle">{app.title}</td>
       <td className="align-middle">
-        <div>{t(`app.${app.title}`)}</div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: t(`app.${app.title}`),
+          }}
+        />
       </td>
     </tr>
   )
