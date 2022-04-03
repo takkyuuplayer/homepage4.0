@@ -110,60 +110,48 @@ const Maths = () => {
   )
 }
 
-const NavCollapse = ({ isOpen }: { isOpen: boolean }) => {
+const Navigation = () => {
   const { t } = useTranslation()
+  const [isOpen, setIsOpen] = React.useState(false)
   return (
-    <Collapse isOpen={isOpen} navbar>
-      <Nav className="mr-auto" navbar>
-        <NavItem>
-          <Link className="nav-link" to="/app/">
-            {t('navigation.app')}
+    <Navbar color="dark" dark expand="md">
+      <div className="container">
+        <div className="navbar-brand">
+          <Link to="/">
+            <Logo />
           </Link>
-        </NavItem>
-        <Blogs />
-        <Maths />
-        <NavItem>
-          <Link className="nav-link" to="/welcome/">
-            {t('navigation.welcome')}
-          </Link>
-        </NavItem>
-        <NavItem>
-          <NavLink
-            href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!"
-            target="_blank"
-          >
-            {t('navigation.contact')}
-          </NavLink>
-        </NavItem>
-      </Nav>
-      <Nav className="ml-auto" navbar>
-        <LocaleSelector />
-      </Nav>
-    </Collapse>
+        </div>
+        <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <Link className="nav-link" to="/app/">
+                {t('navigation.app')}
+              </Link>
+            </NavItem>
+            <Blogs />
+            <Maths />
+            <NavItem>
+              <Link className="nav-link" to="/welcome/">
+                {t('navigation.welcome')}
+              </Link>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!"
+                target="_blank"
+              >
+                {t('navigation.contact')}
+              </NavLink>
+            </NavItem>
+          </Nav>
+          <Nav className="ml-auto" navbar>
+            <LocaleSelector />
+          </Nav>
+        </Collapse>
+      </div>
+    </Navbar>
   )
 }
 
-export default class Navigation extends React.Component {
-  private static reducer = combineReducers(reducer)
-  public state = Navigation.reducer(undefined, {} as any)
-  public render() {
-    return (
-      <div>
-        <Navbar color="dark" dark expand="md">
-          <div className="container">
-            <div className="navbar-brand">
-              <Link to="/">
-                <Logo />
-              </Link>
-            </div>
-            <NavbarToggler onClick={() => this.dispatch(toggleAction())} />
-            <NavCollapse isOpen={this.state.isOpen} />
-          </div>
-        </Navbar>
-      </div>
-    )
-  }
-  private dispatch = (action: localAction) => {
-    this.setState(Navigation.reducer(this.state, action))
-  }
-}
+export default Navigation
