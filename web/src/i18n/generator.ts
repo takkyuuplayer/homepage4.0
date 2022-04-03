@@ -37,7 +37,14 @@ class Generator {
       {},
       ...rows.map((row) =>
         Generator.rowToJSON(_.zipObject(header, row) as IRow, locales)
-      )
+      ),
+      ...locales.map((locale) => ({
+        [locale]: {
+          translation: {
+            datetime: '{{datetime, datetime}}',
+          },
+        },
+      }))
     )
   }
 }

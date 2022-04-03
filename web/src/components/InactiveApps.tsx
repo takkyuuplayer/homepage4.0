@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Table } from 'reactstrap'
 import AppLink from '../components/AppLink'
 import apps, { IAppData } from '../data/apps'
+import { FormatDate } from './DateTime'
 
 const appToTableRow: React.FunctionComponent<IAppData> = (app) => {
   const { t } = useTranslation()
@@ -17,31 +18,11 @@ const appToTableRow: React.FunctionComponent<IAppData> = (app) => {
       </td>
       <td className="align-middle">{app.env}</td>
       <td className="align-middle">
-        {app.publishedOn
-          ? 'yyyy-mm-dd'
-          : // <FormattedDate
-            //   value={app.publishedOn}
-            //   year="numeric"
-            //   month="2-digit"
-            //   day="2-digit"
-            // />
-            null}
+        {app.publishedOn ? <FormatDate date={app.publishedOn} /> : null}
       </td>
       <td className="align-middle">
         {app.version}{' '}
-        {app.lastUpdatedOn
-          ? [
-              '(',
-              // <FormattedDate
-              //   key="format"
-              //   value={app.lastUpdatedOn}
-              //   year="numeric"
-              //   month="2-digit"
-              //   day="2-digit"
-              // />,
-              ')',
-            ]
-          : null}
+        {app.lastUpdatedOn ? <FormatDate date={app.lastUpdatedOn} /> : null}
       </td>
     </tr>
   )
