@@ -20,8 +20,8 @@ describe('i18n/generator', () => {
         key: 'language',
       }
       expect(Generator.rowToJSON(row, ['en', 'ja'])).toStrictEqual({
-        en: { 'c1.language': 'English' },
-        ja: { 'c1.language': 'Japanese' },
+        en: { translation: { 'c1.language': 'English' } },
+        ja: { translation: { 'c1.language': 'Japanese' } },
       })
     })
     it('handles undefined locales', () => {
@@ -31,8 +31,8 @@ describe('i18n/generator', () => {
         key: 'language',
       }
       expect(Generator.rowToJSON(row, ['en', 'ja'])).toStrictEqual({
-        en: { 'c1.language': undefined },
-        ja: { 'c1.language': 'Japanese' },
+        en: { translation: { 'c1.language': undefined } },
+        ja: { translation: { 'c1.language': 'Japanese' } },
       })
     })
   })
@@ -40,8 +40,12 @@ describe('i18n/generator', () => {
     it('converts tsv to locale json', () => {
       const tsv = `category\tkey\tja_JP\ten_US\nc\tk\tあ\ta`
       expect(Generator.tsvToI18n(tsv)).toStrictEqual({
-        en_US: { 'c.k': 'a' },
-        ja_JP: { 'c.k': 'あ' },
+        en_US: {
+          translation: { 'c.k': 'a', datetime: '{{datetime, datetime}}' },
+        },
+        ja_JP: {
+          translation: { 'c.k': 'あ', datetime: '{{datetime, datetime}}' },
+        },
       })
     })
   })
