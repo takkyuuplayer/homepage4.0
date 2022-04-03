@@ -26,7 +26,9 @@ export default () => {
     <Layout>
       <h4>{t('math.kingdom')}</h4>
       <p>{t('math.kingdom.message')}</p>
-      <Table bordered>{questions}</Table>
+      <Table bordered>
+        <tbody>{questions}</tbody>
+      </Table>
     </Layout>
   )
 }

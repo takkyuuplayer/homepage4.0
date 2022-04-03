@@ -6,7 +6,7 @@ interface ILogoSize {
   height?: string
 }
 
-const Logo: React.SFC<ILogoSize> = (props) => (
+const Logo: React.FC<ILogoSize> = (props) => (
   <img src={withPrefix(`img/logo-white.gif`)} alt="Logo" {...props} />
 )
 

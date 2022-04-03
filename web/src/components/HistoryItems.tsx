@@ -9,7 +9,7 @@ export interface IHistoryItem {
 }
 
 export const HistoryItem: React.FC<IHistoryItem> = ({ date, title, url }) => {
-  const line = [<FormatDate date={date} />, ' ', title]
+  const line = [<FormatDate key={`${date}_${title}`} date={date} />, ' ', title]
   return url ? (
     <li className="history-item">
       <a href={url} target="_blank">

@@ -8,7 +8,7 @@ interface IBlog {
   histories: IHistoryItem[]
 }
 
-const Blog: React.SFC<IBlog> = ({ histories }) => {
+const Blog: React.FC<IBlog> = ({ histories }) => {
   const { t } = useTranslation()
   return (
     <article className="history">
