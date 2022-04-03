@@ -13,30 +13,10 @@ import {
   NavLink,
   UncontrolledDropdown,
 } from 'reactstrap'
-import { combineReducers } from 'redux'
 
 import LocaleSelector from './LocaleSelector'
 import Logo from './Logo'
 
-enum ActionTypes {
-  TOGGLE = 'TOGGLE',
-}
-const toggleAction = () => ({
-  type: ActionTypes.TOGGLE,
-})
-type localAction = ReturnType<typeof toggleAction>
-
-const isOpen = (state = false, action: localAction) => {
-  switch (action.type) {
-    case ActionTypes.TOGGLE:
-      return !state
-    default:
-      return state
-  }
-}
-const reducer = {
-  isOpen,
-}
 const Blogs = () => {
   const { t } = useTranslation()
   return (
