@@ -1,5 +1,6 @@
+import { t } from 'i18next'
 import * as React from 'react'
-import { FormattedMessage } from 'react-intl'
+import { useTranslation } from 'react-i18next'
 import { Alert } from 'reactstrap'
 import Layout from '../components/layout'
 
@@ -45,27 +46,24 @@ const Histories = serverHistory
     </a>
   ))
   .reduce(
-    (prev, elem) =>
-      prev.length === 0 ? [elem] : [...prev, <span> &rarr; </span>, elem],
+    (prev, elem, idx) =>
+      prev.length === 0
+        ? [elem]
+        : [...prev, <span key={idx}> &rarr; </span>, elem],
     []
   )
 
-export default () => (
-  <Layout>
-    <h4>
-      <FormattedMessage id="welcome.title" />
-    </h4>
-    <p>
-      <FormattedMessage id="welcome.message1" />
-    </p>
-    <Alert className="text-center" color="secondary">
-      {Histories}
-    </Alert>
-    <p>
-      <FormattedMessage id="welcome.message2" />
-    </p>
-    <p>
-      <FormattedMessage id="welcome.message3" />
-    </p>
-  </Layout>
-)
+export default () => {
+  const { t } = useTranslation()
+  return (
+    <Layout>
+      <h4>{t('welcome.title')}</h4>
+      <p>{t('welcome.message1')}</p>
+      <Alert className="text-center" color="secondary">
+        {Histories}
+      </Alert>
+      <p>{t('welcome.message2')}</p>
+      <p>{t('welcome.message3')}</p>
+    </Layout>
+  )
+}

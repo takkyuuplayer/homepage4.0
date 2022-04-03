@@ -1,5 +1,6 @@
 import Link from 'gatsby-link'
 import * as React from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   Collapse,
   DropdownItem,
@@ -14,7 +15,6 @@ import {
 } from 'reactstrap'
 import { combineReducers } from 'redux'
 
-import { FormattedMessage } from 'react-intl'
 import LocaleSelector from './LocaleSelector'
 import Logo from './Logo'
 
@@ -37,72 +37,111 @@ const isOpen = (state = false, action: localAction) => {
 const reducer = {
   isOpen,
 }
-const Blogs = () => (
-  <UncontrolledDropdown nav inNavbar>
-    <DropdownToggle nav caret>
-      <FormattedMessage id="navigation.blog" />
-    </DropdownToggle>
-    <DropdownMenu right>
-      <DropdownItem>
-        <a
-          target="blank"
-          className="dropdown-item"
-          href="http://takkyuuplayer.hatenablog.com/"
-        >
-          <FormattedMessage id="blog.now" /> ~ 2014
-        </a>
-      </DropdownItem>
-      <DropdownItem>
-        <a
-          target="blank"
-          className="dropdown-item"
-          href="https://takkyuuplayer.blogspot.com/"
-        >
-          2014 ~ 2010
-        </a>
-      </DropdownItem>
-      <DropdownItem divider />
-      <DropdownItem>
-        <a
-          target="blank"
-          className="dropdown-item"
-          href="http://lang-8.com/44064/journals"
-        >
-          English
-        </a>
-      </DropdownItem>
-      <DropdownItem>
-        <a
-          target="blank"
-          className="dropdown-item"
-          href="https://medium.com/@takkyuuplayer"
-        >
-          English (Tech)
-        </a>
-      </DropdownItem>
-    </DropdownMenu>
-  </UncontrolledDropdown>
-)
+const Blogs = () => {
+  const { t } = useTranslation()
+  return (
+    <UncontrolledDropdown nav inNavbar>
+      <DropdownToggle nav caret>
+        {t('navigation.blog')}
+      </DropdownToggle>
+      <DropdownMenu right>
+        <DropdownItem>
+          <a
+            target="blank"
+            className="dropdown-item"
+            href="http://takkyuuplayer.hatenablog.com/"
+          >
+            {t('blog.now')} ~ 2014
+          </a>
+        </DropdownItem>
+        <DropdownItem>
+          <a
+            target="blank"
+            className="dropdown-item"
+            href="https://takkyuuplayer.blogspot.com/"
+          >
+            2014 ~ 2010
+          </a>
+        </DropdownItem>
+        <DropdownItem divider />
+        <DropdownItem>
+          <a
+            target="blank"
+            className="dropdown-item"
+            href="http://lang-8.com/44064/journals"
+          >
+            English
+          </a>
+        </DropdownItem>
+        <DropdownItem>
+          <a
+            target="blank"
+            className="dropdown-item"
+            href="https://medium.com/@takkyuuplayer"
+          >
+            English (Tech)
+          </a>
+        </DropdownItem>
+      </DropdownMenu>
+    </UncontrolledDropdown>
+  )
+}
 
-const Maths = () => (
-  <UncontrolledDropdown nav inNavbar>
-    <DropdownToggle nav caret>
-      <FormattedMessage id="navigation.math" />
-    </DropdownToggle>
-    <DropdownMenu right>
-      <DropdownItem>
-        <Link className="dropdown-item" to="/math/">
-          <FormattedMessage id="navigation.math.kingdom" />
-        </Link>
-      </DropdownItem>
-      <DropdownItem>
-        <Link className="dropdown-item" to="/math_class/">
-          <FormattedMessage id="navigation.math.class" />
-        </Link>
-      </DropdownItem>
-    </DropdownMenu>
-  </UncontrolledDropdown>
-)
+const Maths = () => {
+  const { t } = useTranslation()
+  return (
+    <UncontrolledDropdown nav inNavbar>
+      <DropdownToggle nav caret>
+        {t('navigation.math')}
+      </DropdownToggle>
+      <DropdownMenu right>
+        <DropdownItem>
+          <Link className="dropdown-item" to="/math/">
+            {t('navigation.math.kingdom')}
+          </Link>
+        </DropdownItem>
+        <DropdownItem>
+          <Link className="dropdown-item" to="/math_class/">
+            {t('navigation.math.class')}
+          </Link>
+        </DropdownItem>
+      </DropdownMenu>
+    </UncontrolledDropdown>
+  )
+}
+
+const NavCollapse = ({ isOpen }: { isOpen: boolean }) => {
+  const { t } = useTranslation()
+  return (
+    <Collapse isOpen={isOpen} navbar>
+      <Nav className="mr-auto" navbar>
+        <NavItem>
+          <Link className="nav-link" to="/app/">
+            {t('navigation.app')}
+          </Link>
+        </NavItem>
+        <Blogs />
+        <Maths />
+        <NavItem>
+          <Link className="nav-link" to="/welcome/">
+            {t('navigation.welcome')}
+          </Link>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!"
+            target="_blank"
+          >
+            {t('navigation.contact')}
+          </NavLink>
+        </NavItem>
+      </Nav>
+      <Nav className="ml-auto" navbar>
+        <LocaleSelector />
+      </Nav>
+    </Collapse>
+  )
+}
 
 export default class Navigation extends React.Component {
   private static reducer = combineReducers(reducer)
@@ -118,33 +157,7 @@ export default class Navigation extends React.Component {
               </Link>
             </div>
             <NavbarToggler onClick={() => this.dispatch(toggleAction())} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="mr-auto" navbar>
-                <NavItem>
-                  <Link className="nav-link" to="/app/">
-                    <FormattedMessage id="navigation.app" />
-                  </Link>
-                </NavItem>
-                <Blogs />
-                <Maths />
-                <NavItem>
-                  <Link className="nav-link" to="/welcome/">
-                    <FormattedMessage id="navigation.welcome" />
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!"
-                    target="_blank"
-                  >
-                    <FormattedMessage id="navigation.contact" />
-                  </NavLink>
-                </NavItem>
-              </Nav>
-              <Nav className="ml-auto" navbar>
-                <LocaleSelector />
-              </Nav>
-            </Collapse>
+            <NavCollapse isOpen={this.state.isOpen} />
           </div>
         </Navbar>
       </div>

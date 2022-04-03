@@ -3,12 +3,12 @@ import { Helmet } from 'react-helmet'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { graphql, StaticQuery } from 'gatsby'
+import { Provider } from 'react-redux'
 import { Container } from 'reactstrap'
+import '../i18n/i18n'
+import store from '../store'
 import Footer from './Footer'
 import Header from './Header'
-
-import { Provider } from 'react-intl-redux'
-import store from '../store'
 
 /* tslint:disable no-var-requires */
 require('./index.css')

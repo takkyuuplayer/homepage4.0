@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FormattedDate } from 'react-intl'
+// import { FormattedDate } from 'react-intl'
 
 export interface IHistoryItem {
   date: Date
@@ -8,13 +8,13 @@ export interface IHistoryItem {
 }
 export const HistoryItem: React.SFC<IHistoryItem> = ({ date, title, url }) => {
   const line = [
-    <FormattedDate
-      key="dummy"
-      value={date}
-      year="numeric"
-      month="2-digit"
-      day="2-digit"
-    />,
+    // <FormattedDate
+    //   key="dummy"
+    //   value={date}
+    //   year="numeric"
+    //   month="2-digit"
+    //   day="2-digit"
+    // />,
     ' ',
     title,
   ]

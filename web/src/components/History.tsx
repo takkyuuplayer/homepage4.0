@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FormattedMessage } from 'react-intl'
+import { useTranslation } from 'react-i18next'
 import createHistoryItems from './HistoryItems'
 
 const histories = [
@@ -107,12 +107,13 @@ const histories = [
   { date: new Date('2004/04/17'), title: 'ホームページ作成開始' },
 ]
 
-export default () => (
-  <article className="history">
-    <h4>
-      <FormattedMessage id="top.history" />
-    </h4>
-    <hr />
-    <ul className="list-unstyled">{createHistoryItems(histories)}</ul>
-  </article>
-)
+export default () => {
+  const { t } = useTranslation()
+  return (
+    <article className="history">
+      <h4>{t('top.history')}</h4>
+      <hr />
+      <ul className="list-unstyled">{createHistoryItems(histories)}</ul>
+    </article>
+  )
+}

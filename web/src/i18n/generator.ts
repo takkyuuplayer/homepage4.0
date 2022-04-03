@@ -8,7 +8,9 @@ interface IRow {
 }
 interface II18n {
   [locale: string]: {
-    [key: string]: string
+    translation: {
+      [key: string]: string
+    }
   }
 }
 
@@ -20,7 +22,9 @@ class Generator {
   public static rowToJSON = (row: IRow, locales: string[]) =>
     locales.reduce((ret: II18n, locale) => {
       ret[locale] = {
-        [`${row.category}.${row.key}`]: row[locale],
+        translation: {
+          [`${row.category}.${row.key}`]: row[locale],
+        },
       }
       return ret
     }, {})
