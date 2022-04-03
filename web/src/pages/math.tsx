@@ -1,5 +1,4 @@
 import { withPrefix } from 'gatsby-link'
-import { t } from 'i18next'
 import * as _ from 'lodash'
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -7,6 +6,7 @@ import { Table } from 'reactstrap'
 import Layout from '../components/layout'
 
 const questions = _.range(0, 18).map((num: number) => {
+  const { t } = useTranslation()
   const key = num < 9 ? '0' + (num + 1) : num + 1
   return (
     <tr key={key}>

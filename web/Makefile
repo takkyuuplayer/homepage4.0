@@ -10,17 +10,17 @@ confirm:
 	@echo '${Distribution}'
 
 node_modules:
-	yarn install
+	npm install
 
 test:
-	yarn test
-	yarn lint
+	npm run test
+	npm run lint
 
 src/i18n/locales.json:
-	yarn i18n
+	npm run i18n
 
 build:
-	yarn build
+	npm run build
 
 deploy:
 	aws s3 sync public s3://${Bucket}
