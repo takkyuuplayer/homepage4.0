@@ -1,15 +1,27 @@
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
-import { connect } from 'react-redux'
-import { RootState } from '../ducks'
 import createHistoryItems, { IHistoryItem } from './HistoryItems'
 
-interface IBlog {
-  histories: IHistoryItem[]
-}
-
-const Blog: React.FC<IBlog> = ({ histories }) => {
+export default () => {
+  const initialState: ReadonlyArray<IHistoryItem> = JSON.parse(
+    (localStorage && localStorage.getItem('blog')) || '[]'
+  )
+  const [histories, setHistories] = React.useState(initialState)
   const { t } = useTranslation()
+
+  React.useEffect(() => {
+    fetch(
+      'https://wudix076af.execute-api.ap-northeast-1.amazonaws.com/Prod/feed'
+    )
+      .then((res) => res.json())
+      .then((body) => {
+        setHistories(body.data)
+        if (localStorage) {
+          localStorage.setItem('blog', JSON.stringify(body.data))
+        }
+      })
+  }, [])
+
   return (
     <article className="history">
       <h4>{t('navigation.blog')}</h4>
@@ -18,13 +30,3 @@ const Blog: React.FC<IBlog> = ({ histories }) => {
     </article>
   )
 }
-
-const mapStateToProps = (state: RootState) => ({
-  histories: state.blog.map((feed) => ({
-    date: new Date(feed.published),
-    title: feed.title,
-    url: feed.link,
-  })),
-})
-
-export default connect(mapStateToProps)(Blog)

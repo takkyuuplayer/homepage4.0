@@ -21,7 +21,7 @@ export const HistoryItem: React.FC<IHistoryItem> = ({ date, title, url }) => {
   )
 }
 
-export default (histories: IHistoryItem[]) =>
+export default (histories: ReadonlyArray<IHistoryItem>) =>
   histories.map((history) => (
     <HistoryItem key={JSON.stringify(history)} {...history} />
   ))
