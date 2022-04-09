@@ -1,41 +1,41 @@
 .social-icon {
-    font-size: x-large;
-    color: #444;
-    margin-right: 8pt;
+  font-size: x-large;
+  color: #444;
+  margin-right: 8pt;
 }
 
 .social-icon:hover {
-    color: #4dadf7;
+  color: #4dadf7;
 }
 
 .copy-right {
-    font-size: x-large;
+  font-size: x-large;
 }
 
 .main {
-    padding: 30px 15px 0;
+  padding: 30px 15px 0;
 }
 
 article.history ul {
-    height: 12em;
-    overflow: auto;
-    padding-left: 20px;
+  height: 12em;
+  overflow: auto;
+  padding-left: 20px;
 }
 
 .history-item {
-    display: block;
-    margin-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .history-item a {
-    display: block;
-    text-decoration: none;
+  display: block;
+  text-decoration: none;
 }
 
 .history-item a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 span.history-date {
-    margin-right: 1em;
+  margin-right: 1em;
 }

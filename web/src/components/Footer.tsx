@@ -5,7 +5,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react'
-import { FormattedMessage } from 'react-intl'
+import { useTranslation } from 'react-i18next'
 import { Container } from 'reactstrap'
 
 const links = [
@@ -27,16 +27,17 @@ const links = [
   </a>
 ))
 
-export default () => (
-  <footer>
-    <hr />
-    <Container>
-      {links}
-      <span className="pull-right">
-        &copy;
-        <FormattedMessage id="common.takkyuuplayer" /> 2004 -{' '}
-        {new Date().getFullYear()}
-      </span>
-    </Container>
-  </footer>
-)
+export default () => {
+  const { t } = useTranslation()
+  return (
+    <footer>
+      <hr />
+      <Container>
+        {links}
+        <span className="pull-right">
+          &copy; {t('common.takkyuuplayer')} 2004 - {new Date().getFullYear()}
+        </span>
+      </Container>
+    </footer>
+  )
+}

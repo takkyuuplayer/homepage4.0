@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { FormattedDate, FormattedMessage, useIntl } from 'react-intl'
+import { useTranslation } from 'react-i18next'
 import { Table } from 'reactstrap'
 import AppLink from '../components/AppLink'
 import apps, { IAppData } from '../data/apps'
+import { FormatDate } from './DateTime'
 
 const appToTableRow: React.FunctionComponent<IAppData> = (app) => {
-  const intl = useIntl()
+  const { t } = useTranslation()
   return (
     <tr key={app.title} className="table-active">
       <th style={{ padding: '10px' }} className="align-middle" scope="row">
@@ -15,69 +16,43 @@ const appToTableRow: React.FunctionComponent<IAppData> = (app) => {
       <td className="align-middle">
         <div
           dangerouslySetInnerHTML={{
-            __html: intl.formatMessage({ id: `app.${app.title}` }),
+            __html: t(`app.${app.title}`),
           }}
         />
       </td>
       <td className="align-middle">{app.env}</td>
       <td className="align-middle">
-        {app.publishedOn ? (
-          <FormattedDate
-            value={app.publishedOn}
-            year="numeric"
-            month="2-digit"
-            day="2-digit"
-          />
-        ) : null}
+        {app.publishedOn ? <FormatDate date={app.publishedOn} /> : null}
       </td>
       <td className="align-middle">
         {app.version}{' '}
-        {app.lastUpdatedOn
-          ? [
-              '(',
-              <FormattedDate
-                key="format"
-                value={app.lastUpdatedOn}
-                year="numeric"
-                month="2-digit"
-                day="2-digit"
-              />,
-              ')',
-            ]
-          : null}
+        {app.lastUpdatedOn ? <FormatDate date={app.lastUpdatedOn} /> : null}
       </td>
     </tr>
   )
 }
 
-const InactiveApps = () => (
-  <Table size="sm">
-    <thead>
-      <tr>
-        <th></th>
-        <th>
-          <FormattedMessage id="app.title" />
-        </th>
-        <th style={{ width: '40%' }}>
-          <FormattedMessage id="app.description" />
-        </th>
-        <th>
-          <FormattedMessage id="app.environment" />
-        </th>
-        <th>
-          <FormattedMessage id="app.published_on" />
-        </th>
-        <th>
-          <FormattedMessage id="app.version" />
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      {apps
-        .filter((app) => app.status === 'inactive')
-        .map((app) => appToTableRow(app))}
-    </tbody>
-  </Table>
-)
+const InactiveApps = () => {
+  const { t } = useTranslation()
+  return (
+    <Table size="sm">
+      <thead>
+        <tr>
+          <th></th>
+          <th>{t('app.title')}</th>
+          <th style={{ width: '40%' }}>{t('app.description')}</th>
+          <th>{t('app.environment')}</th>
+          <th>{t('app.published_on')}</th>
+          <th>{t('app.version')}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {apps
+          .filter((app) => app.status === 'inactive')
+          .map((app) => appToTableRow(app))}
+      </tbody>
+    </Table>
+  )
+}
 
 export default InactiveApps

@@ -1,5 +1,4 @@
-import * as fs from 'fs'
-import * as _ from 'lodash'
+import { merge, zipObject } from 'lodash'
 
 interface IRow {
   category: string
@@ -8,7 +7,9 @@ interface IRow {
 }
 interface II18n {
   [locale: string]: {
-    [key: string]: string
+    translation: {
+      [key: string]: string
+    }
   }
 }
 
@@ -20,7 +21,9 @@ class Generator {
   public static rowToJSON = (row: IRow, locales: string[]) =>
     locales.reduce((ret: II18n, locale) => {
       ret[locale] = {
-        [`${row.category}.${row.key}`]: row[locale],
+        translation: {
+          [`${row.category}.${row.key}`]: row[locale],
+        },
       }
       return ret
     }, {})
@@ -29,11 +32,18 @@ class Generator {
     const header = rows.shift()
     const locales = Generator.getLocales(header)
 
-    return _.merge(
+    return merge(
       {},
       ...rows.map((row) =>
-        Generator.rowToJSON(_.zipObject(header, row) as IRow, locales)
-      )
+        Generator.rowToJSON(zipObject(header, row) as IRow, locales)
+      ),
+      ...locales.map((locale) => ({
+        [locale]: {
+          translation: {
+            datetime: '{{datetime, datetime}}',
+          },
+        },
+      }))
     )
   }
 }
