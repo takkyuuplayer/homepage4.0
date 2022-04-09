@@ -1,5 +1,4 @@
-import * as fs from 'fs'
-import * as _ from 'lodash'
+import { merge, zipObject } from 'lodash'
 
 interface IRow {
   category: string
@@ -33,10 +32,10 @@ class Generator {
     const header = rows.shift()
     const locales = Generator.getLocales(header)
 
-    return _.merge(
+    return merge(
       {},
       ...rows.map((row) =>
-        Generator.rowToJSON(_.zipObject(header, row) as IRow, locales)
+        Generator.rowToJSON(zipObject(header, row) as IRow, locales)
       ),
       ...locales.map((locale) => ({
         [locale]: {

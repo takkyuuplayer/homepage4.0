@@ -1,5 +1,5 @@
 import { withPrefix } from 'gatsby-link'
-import * as _ from 'lodash'
+import { zipObject } from 'lodash'
 
 const tsv = `title	status	type	url	publishedOn	version	lastUpdatedOn	env
 PcEnd	inactive	standalone	pcend.zip	2004/10/06	1.05	2004/12/20	WindowsXP
@@ -39,7 +39,7 @@ export interface IAppData {
 }
 
 const rowToAppRow = (row: typeof rows[0]): IAppData => {
-  const zipped = _.zipObject(header, row)
+  const zipped = zipObject(header, row)
   return {
     env: zipped.env,
     lastUpdatedOn:
