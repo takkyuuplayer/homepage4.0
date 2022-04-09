@@ -1,8 +1,7 @@
-import * as React from 'react'
-import { Helmet } from 'react-helmet'
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { graphql, StaticQuery } from 'gatsby'
+import * as React from 'react'
+import { Helmet } from 'react-helmet'
 import { Container } from 'reactstrap'
 import '../i18n/i18n'
 import Footer from './Footer'

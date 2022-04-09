@@ -1,5 +1,5 @@
-import * as React from 'react'
 import { withPrefix } from 'gatsby-link'
+import * as React from 'react'
 
 interface ILogoSize {
   width?: string

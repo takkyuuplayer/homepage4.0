@@ -13,7 +13,6 @@ import {
   NavLink,
   UncontrolledDropdown,
 } from 'reactstrap'
-
 import LocaleSelector from './LocaleSelector'
 import Logo from './Logo'
 

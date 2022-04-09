@@ -8,7 +8,6 @@ i18next
   .use(initReactI18next)
   .init({
     resources: loc,
-    lng: 'ja',
     fallbackLng: 'ja',
     interpolation: {
       escapeValue: false,

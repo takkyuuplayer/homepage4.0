@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useTranslation } from 'react-i18next'
 import { FormatDate } from './DateTime'
 
 export interface IHistoryItem {

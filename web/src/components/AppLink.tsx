@@ -4,7 +4,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react'
-
 import { AppTypes, IAppData } from '../data/apps'
 
 const AppLink: React.FC<IAppData> = ({ type, url, title }) =>

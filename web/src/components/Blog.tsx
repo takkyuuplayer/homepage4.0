@@ -1,7 +1,14 @@
 import * as React from 'react'
-import useLocalStorage from 'use-local-storage'
 import { useTranslation } from 'react-i18next'
+import useLocalStorage from 'use-local-storage'
 import createHistoryItems, { IHistoryItem } from './HistoryItems'
+
+interface IBlogFeed {
+  title: string
+  link: string
+  published: string
+  [attr: string]: string
+}
 
 export default () => {
   const [histories, setHistories] = useLocalStorage<
@@ -14,7 +21,15 @@ export default () => {
       'https://wudix076af.execute-api.ap-northeast-1.amazonaws.com/Prod/feed'
     )
       .then((res) => res.json())
-      .then((body) => setHistories(body.data))
+      .then((body) =>
+        setHistories(
+          body.data.map((feed: IBlogFeed) => ({
+            date: new Date(feed.published),
+            title: feed.title,
+            url: feed.link,
+          }))
+        )
+      )
   }, [])
 
   return (
