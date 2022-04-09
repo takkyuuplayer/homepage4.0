@@ -1,13 +1,12 @@
 import * as React from 'react'
+import useLocalStorage from 'use-local-storage'
 import { useTranslation } from 'react-i18next'
 import createHistoryItems, { IHistoryItem } from './HistoryItems'
 
 export default () => {
-  let initialState: ReadonlyArray<IHistoryItem> = []
-  if (typeof localStorage !== 'undefined') {
-    initialState = JSON.parse(localStorage.getItem('blog') || '[]')
-  }
-  const [histories, setHistories] = React.useState(initialState)
+  const [histories, setHistories] = useLocalStorage<
+    ReadonlyArray<IHistoryItem>
+  >('blog', [])
   const { t } = useTranslation()
 
   React.useEffect(() => {
@@ -15,12 +14,7 @@ export default () => {
       'https://wudix076af.execute-api.ap-northeast-1.amazonaws.com/Prod/feed'
     )
       .then((res) => res.json())
-      .then((body) => {
-        setHistories(body.data)
-        if (localStorage) {
-          localStorage.setItem('blog', JSON.stringify(body.data))
-        }
-      })
+      .then((body) => setHistories(body.data))
   }, [])
 
   return (
