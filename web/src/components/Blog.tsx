@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next'
 import createHistoryItems, { IHistoryItem } from './HistoryItems'
 
 export default () => {
-  const initialState: ReadonlyArray<IHistoryItem> = JSON.parse(
-    (localStorage && localStorage.getItem('blog')) || '[]'
-  )
+  let initialState: ReadonlyArray<IHistoryItem> = []
+  if (typeof localStorage !== 'undefined') {
+    initialState = JSON.parse(localStorage.getItem('blog') || '[]')
+  }
   const [histories, setHistories] = React.useState(initialState)
   const { t } = useTranslation()
 
