@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { graphql, StaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import * as React from 'react'
 import { Helmet } from 'react-helmet'
 import { Container } from 'reactstrap'
@@ -15,34 +15,33 @@ interface ILayoutProps {
   children: any
 }
 
-const Layout = ({ children }: ILayoutProps) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
+const Layout = ({ children }: ILayoutProps) => {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
         }
       }
-    `}
-    render={(data) => (
-      <div>
-        <Header />
-        <Container>
-          <Helmet
-            title={data.site.siteMetadata.title}
-            meta={[
-              { name: 'description', content: 'takkyuuplayer' },
-              { name: 'keywords', content: 'takkyuuplayer' },
-            ]}
-          />
-          <main className="main">{children}</main>
-        </Container>
-        <Footer />
-      </div>
-    )}
-  />
-)
+    }
+  `)
+
+  return (
+    <div>
+      <Header />
+      <Container>
+        <Helmet
+          title={data.site.siteMetadata.title}
+          meta={[
+            { name: 'description', content: 'takkyuuplayer' },
+            { name: 'keywords', content: 'takkyuuplayer' },
+          ]}
+        />
+        <main className="main">{children}</main>
+      </Container>
+      <Footer />
+    </div>
+  )
+}
 
 export default Layout
