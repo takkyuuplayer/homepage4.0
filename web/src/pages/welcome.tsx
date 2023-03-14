@@ -58,7 +58,7 @@ export default () => {
     <Layout>
       <h4>{t('welcome.title')}</h4>
       <p>{t('welcome.message1')}</p>
-      <Alert className="text-center" color="secondary">
+      <Alert className="text-center" variant="secondary">
         {Histories}
       </Alert>
       <p>{t('welcome.message2')}</p>
