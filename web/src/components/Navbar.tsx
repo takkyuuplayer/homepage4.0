@@ -1,30 +1,19 @@
 import { Link } from 'gatsby-link'
 import * as React from 'react'
+import Dropdown from 'react-bootstrap/Dropdown'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
 import { useTranslation } from 'react-i18next'
-import {
-  Collapse,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Nav,
-  Navbar,
-  NavbarToggler,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-} from 'reactstrap'
 import LocaleSelector from './LocaleSelector'
 import Logo from './Logo'
 
 const Blogs = () => {
   const { t } = useTranslation()
   return (
-    <UncontrolledDropdown nav inNavbar>
-      <DropdownToggle nav caret>
-        {t('navigation.blog')}
-      </DropdownToggle>
-      <DropdownMenu right>
-        <DropdownItem>
+    <Dropdown>
+      <Dropdown.Toggle>{t('navigation.blog')}</Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item>
           <a
             target="blank"
             className="dropdown-item"
@@ -32,8 +21,8 @@ const Blogs = () => {
           >
             {t('blog.now')} ~ 2014
           </a>
-        </DropdownItem>
-        <DropdownItem>
+        </Dropdown.Item>
+        <Dropdown.Item>
           <a
             target="blank"
             className="dropdown-item"
@@ -41,9 +30,9 @@ const Blogs = () => {
           >
             2014 ~ 2010
           </a>
-        </DropdownItem>
-        <DropdownItem divider />
-        <DropdownItem>
+        </Dropdown.Item>
+        <Dropdown.Item divider />
+        <Dropdown.Item>
           <a
             target="blank"
             className="dropdown-item"
@@ -51,8 +40,8 @@ const Blogs = () => {
           >
             English
           </a>
-        </DropdownItem>
-        <DropdownItem>
+        </Dropdown.Item>
+        <Dropdown.Item>
           <a
             target="blank"
             className="dropdown-item"
@@ -60,74 +49,71 @@ const Blogs = () => {
           >
             English (Tech)
           </a>
-        </DropdownItem>
-      </DropdownMenu>
-    </UncontrolledDropdown>
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
   )
 }
 
 const Maths = () => {
   const { t } = useTranslation()
   return (
-    <UncontrolledDropdown nav inNavbar>
-      <DropdownToggle nav caret>
-        {t('navigation.math')}
-      </DropdownToggle>
-      <DropdownMenu right>
-        <DropdownItem>
+    <Dropdown>
+      <Dropdown.Toggle>{t('navigation.math')}</Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item>
           <Link className="dropdown-item" to="/math/">
             {t('navigation.math.kingdom')}
           </Link>
-        </DropdownItem>
-        <DropdownItem>
+        </Dropdown.Item>
+        <Dropdown.Item>
           <Link className="dropdown-item" to="/math_class/">
             {t('navigation.math.class')}
           </Link>
-        </DropdownItem>
-      </DropdownMenu>
-    </UncontrolledDropdown>
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
   )
 }
 
 const Navigation = () => {
   const { t } = useTranslation()
-  const [isOpen, setIsOpen] = React.useState(false)
   return (
-    <Navbar color="dark" dark expand="md">
+    <Navbar color="dark" expand="md">
       <div className="container">
         <div className="navbar-brand">
           <Link to="/">
             <Logo />
           </Link>
         </div>
-        <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
+        <Navbar.Toggle aria-controls="app-nav" />
+        <Navbar.Collapse id="app-nav">
+          <Nav className="mr-auto">
+            <Nav.Item>
               <Link className="nav-link" to="/app/">
                 {t('navigation.app')}
               </Link>
-            </NavItem>
+            </Nav.Item>
             <Blogs />
             <Maths />
-            <NavItem>
+            <Nav.Item>
               <Link className="nav-link" to="/welcome/">
                 {t('navigation.welcome')}
               </Link>
-            </NavItem>
-            <NavItem>
-              <NavLink
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
                 href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!"
                 target="_blank"
               >
                 {t('navigation.contact')}
-              </NavLink>
-            </NavItem>
+              </Nav.Link>
+            </Nav.Item>
           </Nav>
           <Nav className="ml-auto" navbar>
             <LocaleSelector />
           </Nav>
-        </Collapse>
+        </Navbar.Collapse>
       </div>
     </Navbar>
   )

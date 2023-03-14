@@ -1,6 +1,6 @@
 import * as React from 'react'
+import Table from 'react-bootstrap/Table'
 import { useTranslation } from 'react-i18next'
-import { Table } from 'reactstrap'
 import AppLink from '../components/AppLink'
 import apps, { IAppData } from '../data/apps'
 import { FormatDate } from './DateTime'

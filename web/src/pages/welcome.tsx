@@ -1,6 +1,6 @@
 import * as React from 'react'
+import Alert from 'react-bootstrap/Alert'
 import { useTranslation } from 'react-i18next'
-import { Alert } from 'reactstrap'
 import Layout from '../components/layout'
 
 const serverHistory = [
