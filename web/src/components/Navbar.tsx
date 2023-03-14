@@ -12,7 +12,7 @@ const Blogs = () => {
   const { t } = useTranslation()
   return (
     <NavDropdown title={t('navigation.blog')}>
-      <NavDropdown.Item>
+      <NavDropdown.Item as="div">
         <a
           target="blank"
           className="dropdown-item"
@@ -21,7 +21,7 @@ const Blogs = () => {
           {t('blog.now')} ~ 2014
         </a>
       </NavDropdown.Item>
-      <NavDropdown.Item>
+      <NavDropdown.Item as="div">
         <a
           target="blank"
           className="dropdown-item"
@@ -31,7 +31,7 @@ const Blogs = () => {
         </a>
       </NavDropdown.Item>
       <NavDropdown.Divider />
-      <NavDropdown.Item>
+      <NavDropdown.Item as="div">
         <a
           target="blank"
           className="dropdown-item"
@@ -40,7 +40,7 @@ const Blogs = () => {
           English
         </a>
       </NavDropdown.Item>
-      <NavDropdown.Item>
+      <NavDropdown.Item as="div">
         <a
           target="blank"
           className="dropdown-item"
@@ -105,7 +105,7 @@ const Navigation = () => {
               </Nav.Link>
             </Nav.Item>
           </Nav>
-          <Nav className="ms-auto" navbar>
+          <Nav className="ms-auto">
             <LocaleSelector />
           </Nav>
         </Navbar.Collapse>
