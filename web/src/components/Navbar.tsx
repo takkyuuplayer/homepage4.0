@@ -1,8 +1,9 @@
 import { Link } from 'gatsby-link'
 import * as React from 'react'
-import Dropdown from 'react-bootstrap/Dropdown'
+import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import { useTranslation } from 'react-i18next'
 import LocaleSelector from './LocaleSelector'
 import Logo from './Logo'
@@ -10,82 +11,76 @@ import Logo from './Logo'
 const Blogs = () => {
   const { t } = useTranslation()
   return (
-    <Dropdown>
-      <Dropdown.Toggle>{t('navigation.blog')}</Dropdown.Toggle>
-      <Dropdown.Menu>
-        <Dropdown.Item>
-          <a
-            target="blank"
-            className="dropdown-item"
-            href="http://takkyuuplayer.hatenablog.com/"
-          >
-            {t('blog.now')} ~ 2014
-          </a>
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <a
-            target="blank"
-            className="dropdown-item"
-            href="https://takkyuuplayer.blogspot.com/"
-          >
-            2014 ~ 2010
-          </a>
-        </Dropdown.Item>
-        <Dropdown.Item divider />
-        <Dropdown.Item>
-          <a
-            target="blank"
-            className="dropdown-item"
-            href="http://lang-8.com/44064/journals"
-          >
-            English
-          </a>
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <a
-            target="blank"
-            className="dropdown-item"
-            href="https://medium.com/@takkyuuplayer"
-          >
-            English (Tech)
-          </a>
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+    <NavDropdown title={t('navigation.blog')}>
+      <NavDropdown.Item>
+        <a
+          target="blank"
+          className="dropdown-item"
+          href="http://takkyuuplayer.hatenablog.com/"
+        >
+          {t('blog.now')} ~ 2014
+        </a>
+      </NavDropdown.Item>
+      <NavDropdown.Item>
+        <a
+          target="blank"
+          className="dropdown-item"
+          href="https://takkyuuplayer.blogspot.com/"
+        >
+          2014 ~ 2010
+        </a>
+      </NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item>
+        <a
+          target="blank"
+          className="dropdown-item"
+          href="http://lang-8.com/44064/journals"
+        >
+          English
+        </a>
+      </NavDropdown.Item>
+      <NavDropdown.Item>
+        <a
+          target="blank"
+          className="dropdown-item"
+          href="https://medium.com/@takkyuuplayer"
+        >
+          English (Tech)
+        </a>
+      </NavDropdown.Item>
+    </NavDropdown>
   )
 }
 
 const Maths = () => {
   const { t } = useTranslation()
   return (
-    <Dropdown>
-      <Dropdown.Toggle>{t('navigation.math')}</Dropdown.Toggle>
-      <Dropdown.Menu>
-        <Dropdown.Item>
-          <Link className="dropdown-item" to="/math/">
-            {t('navigation.math.kingdom')}
-          </Link>
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <Link className="dropdown-item" to="/math_class/">
-            {t('navigation.math.class')}
-          </Link>
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+    <NavDropdown title={t('navigation.math')}>
+      <NavDropdown.Item>
+        <Link className="dropdown-item" to="/math/">
+          {t('navigation.math.kingdom')}
+        </Link>
+      </NavDropdown.Item>
+      <NavDropdown.Item>
+        <Link className="dropdown-item" to="/math_class/">
+          {t('navigation.math.class')}
+        </Link>
+      </NavDropdown.Item>
+    </NavDropdown>
   )
 }
 
 const Navigation = () => {
   const { t } = useTranslation()
   return (
-    <Navbar color="dark" expand="md">
-      <div className="container">
-        <div className="navbar-brand">
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand>
           <Link to="/">
             <Logo />
           </Link>
-        </div>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="app-nav" />
         <Navbar.Collapse id="app-nav">
           <Nav className="mr-auto">
@@ -110,11 +105,11 @@ const Navigation = () => {
               </Nav.Link>
             </Nav.Item>
           </Nav>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ms-auto" navbar>
             <LocaleSelector />
           </Nav>
         </Navbar.Collapse>
-      </div>
+      </Container>
     </Navbar>
   )
 }
