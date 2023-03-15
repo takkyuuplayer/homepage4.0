@@ -8,7 +8,7 @@ const appToTableRow: React.FC<IAppData> = (app) => {
   const { t } = useTranslation()
   return (
     <tr key={app.title}>
-      <th style={{ padding: '10px' }} className="align-middle" scope="row">
+      <th style={{ padding: '10px' }} className="align-middle">
         <AppLink {...app} />
       </th>
       <td className="align-middle">{app.title}</td>
