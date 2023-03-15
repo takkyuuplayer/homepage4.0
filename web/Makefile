@@ -1,6 +1,6 @@
 .PHONY: node_modules src/i18n/locales.json
 DomainName=takkyuuplayer.com
-Distribution=$(shell aws cloudfront list-distributions | jq '.DistributionList.Items[] | select(.Aliases.Items[] == "${DomainName}")')
+Distribution=$(shell aws cloudfront list-distributions | jq '.DistributionList.Items[] | select(.Aliases?.Items[]? == "${DomainName}")')
 DistributionId=$(shell echo '${Distribution}' | jq .Id)
 Bucket=$(shell echo '${Distribution}' | jq '.Origins.Items[0].DomainName' | sed -e 's/"//g' | sed -e 's/\..*//g')
 
