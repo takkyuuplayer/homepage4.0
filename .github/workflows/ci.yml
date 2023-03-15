@@ -31,5 +31,5 @@ jobs:
       - run: make build -C web
       - uses: actions/upload-artifact@v3
         with:
-          name: web/public
+          name: public
           path: web/public
