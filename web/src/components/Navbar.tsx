@@ -1,134 +1,115 @@
-import Link from 'gatsby-link'
+import { Link } from 'gatsby-link'
 import * as React from 'react'
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import { useTranslation } from 'react-i18next'
-import {
-  Collapse,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Nav,
-  Navbar,
-  NavbarToggler,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-} from 'reactstrap'
 import LocaleSelector from './LocaleSelector'
 import Logo from './Logo'
 
 const Blogs = () => {
   const { t } = useTranslation()
   return (
-    <UncontrolledDropdown nav inNavbar>
-      <DropdownToggle nav caret>
-        {t('navigation.blog')}
-      </DropdownToggle>
-      <DropdownMenu right>
-        <DropdownItem>
-          <a
-            target="blank"
-            className="dropdown-item"
-            href="http://takkyuuplayer.hatenablog.com/"
-          >
-            {t('blog.now')} ~ 2014
-          </a>
-        </DropdownItem>
-        <DropdownItem>
-          <a
-            target="blank"
-            className="dropdown-item"
-            href="https://takkyuuplayer.blogspot.com/"
-          >
-            2014 ~ 2010
-          </a>
-        </DropdownItem>
-        <DropdownItem divider />
-        <DropdownItem>
-          <a
-            target="blank"
-            className="dropdown-item"
-            href="http://lang-8.com/44064/journals"
-          >
-            English
-          </a>
-        </DropdownItem>
-        <DropdownItem>
-          <a
-            target="blank"
-            className="dropdown-item"
-            href="https://medium.com/@takkyuuplayer"
-          >
-            English (Tech)
-          </a>
-        </DropdownItem>
-      </DropdownMenu>
-    </UncontrolledDropdown>
+    <NavDropdown title={t('navigation.blog')}>
+      <NavDropdown.Item as="div">
+        <a
+          target="blank"
+          className="dropdown-item"
+          href="http://takkyuuplayer.hatenablog.com/"
+        >
+          {t('blog.now')} ~ 2014
+        </a>
+      </NavDropdown.Item>
+      <NavDropdown.Item as="div">
+        <a
+          target="blank"
+          className="dropdown-item"
+          href="https://takkyuuplayer.blogspot.com/"
+        >
+          2014 ~ 2010
+        </a>
+      </NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item as="div">
+        <a
+          target="blank"
+          className="dropdown-item"
+          href="http://lang-8.com/44064/journals"
+        >
+          English
+        </a>
+      </NavDropdown.Item>
+      <NavDropdown.Item as="div">
+        <a
+          target="blank"
+          className="dropdown-item"
+          href="https://medium.com/@takkyuuplayer"
+        >
+          English (Tech)
+        </a>
+      </NavDropdown.Item>
+    </NavDropdown>
   )
 }
 
 const Maths = () => {
   const { t } = useTranslation()
   return (
-    <UncontrolledDropdown nav inNavbar>
-      <DropdownToggle nav caret>
-        {t('navigation.math')}
-      </DropdownToggle>
-      <DropdownMenu right>
-        <DropdownItem>
-          <Link className="dropdown-item" to="/math/">
-            {t('navigation.math.kingdom')}
-          </Link>
-        </DropdownItem>
-        <DropdownItem>
-          <Link className="dropdown-item" to="/math_class/">
-            {t('navigation.math.class')}
-          </Link>
-        </DropdownItem>
-      </DropdownMenu>
-    </UncontrolledDropdown>
+    <NavDropdown title={t('navigation.math')}>
+      <NavDropdown.Item>
+        <Link className="dropdown-item" to="/math/">
+          {t('navigation.math.kingdom')}
+        </Link>
+      </NavDropdown.Item>
+      <NavDropdown.Item>
+        <Link className="dropdown-item" to="/math_class/">
+          {t('navigation.math.class')}
+        </Link>
+      </NavDropdown.Item>
+    </NavDropdown>
   )
 }
 
 const Navigation = () => {
   const { t } = useTranslation()
-  const [isOpen, setIsOpen] = React.useState(false)
   return (
-    <Navbar color="dark" dark expand="md">
-      <div className="container">
-        <div className="navbar-brand">
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand>
           <Link to="/">
             <Logo />
           </Link>
-        </div>
-        <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="app-nav" />
+        <Navbar.Collapse id="app-nav">
+          <Nav className="mr-auto">
+            <Nav.Item>
               <Link className="nav-link" to="/app/">
                 {t('navigation.app')}
               </Link>
-            </NavItem>
+            </Nav.Item>
             <Blogs />
             <Maths />
-            <NavItem>
+            <Nav.Item>
               <Link className="nav-link" to="/welcome/">
                 {t('navigation.welcome')}
               </Link>
-            </NavItem>
-            <NavItem>
-              <NavLink
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link
                 href="https://twitter.com/intent/tweet?screen_name=takkyuuplayer&text=Hey!"
                 target="_blank"
               >
                 {t('navigation.contact')}
-              </NavLink>
-            </NavItem>
+              </Nav.Link>
+            </Nav.Item>
           </Nav>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ms-auto">
             <LocaleSelector />
           </Nav>
-        </Collapse>
-      </div>
+        </Navbar.Collapse>
+      </Container>
     </Navbar>
   )
 }

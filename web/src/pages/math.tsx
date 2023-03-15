@@ -1,7 +1,7 @@
 import { withPrefix } from 'gatsby-link'
 import * as React from 'react'
+import Table from 'react-bootstrap/Table'
 import { useTranslation } from 'react-i18next'
-import { Table } from 'reactstrap'
 import Layout from '../components/layout'
 
 export default () => {

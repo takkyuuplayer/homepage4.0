@@ -5,8 +5,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react'
+import Container from 'react-bootstrap/Container'
 import { useTranslation } from 'react-i18next'
-import { Container } from 'reactstrap'
 
 const links = [
   {
