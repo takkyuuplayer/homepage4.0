@@ -1,11 +1,10 @@
-version: "3"
+version: "3.7"
 
 services:
   localstack:
     image: "localstack/localstack"
     ports:
-      - 4567-4583:4567-4583
-      - 8080:8080
+      - 4566:4566
     environment:
       - DEBUG=1
       - SERVICES=lambda,s3,apigateway,cloudformation
