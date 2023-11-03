@@ -4,10 +4,11 @@ export ROOT=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
 build: feed.go
 	@mkdir -p ${ROOT}/build
-	GOOS=linux go build -o ${ROOT}/build/feed ./feed.go
+	CGO_ENABLED=0 GOARCH=arm64 GOOS=linux go build -tags lambda.norpc -o ./build/bootstrap
 
-production:
-	$(MAKE) deploy -C ./deployments/production
+deploy:
+	zip -j ./build/lambda.zip ./build/bootstrap
+	aws lambda update-function-code --function-name feed --zip-file fileb://./build/lambda.zip --publish --architecture arm64
 	$(MAKE) deploy -C ./web
 
 test:
