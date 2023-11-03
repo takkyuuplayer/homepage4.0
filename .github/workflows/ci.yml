@@ -41,19 +41,19 @@ jobs:
       - backend-test
       - frontend-test
     steps:
-      # - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v3
         with:
           name: build
+          path: build
       - uses: actions/download-artifact@v3
         with:
           name: public
-      - run: |
-          tree
+          path: web/public
 
-      # - uses: aws-actions/configure-aws-credentials@v4
-      #   with:
-      #     audience: sts.amazonaws.com
-      #     aws-region: ap-northeast-1
-      #     role-to-assume: ${{ secrets.AWS_DEPLOYMENT_ROLE }}
-      # - run: make deploy
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          audience: sts.amazonaws.com
+          aws-region: ap-northeast-1
+          role-to-assume: ${{ secrets.AWS_DEPLOYMENT_ROLE }}
+      - run: make deploy
