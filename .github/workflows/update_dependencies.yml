@@ -1,0 +1,52 @@
+name: Update Dependencies
+on:
+  schedule:
+    - cron: "38 17 26 * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
+        with:
+          go-version-file: "go.mod"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: update go.mod
+        run: |
+          go get -u
+          go mod tidy
+          go mod download all
+      - name: update web/package.json
+        working-directory: web
+        run: |
+          npx npm-check-updates -u
+          npm install
+          npm audit fix
+      - name: update provision/package.json
+        working-directory: provision
+        run: |
+          npx npm-check-updates -u
+          npm install
+          npm audit fix
+
+      - uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update dependencies"
+          title: "Update dependencies"
+          branch: "update-dependencies"
+          delete-branch: true
+          reviewers: takkyuuplayer
+          body: |
+            Run
+
+            ```
+            $ git fetch --all
+            $ git checkout update-dependencies
+            $ git reset --hard origin/update-dependencies
+            $ git commit --allow-empty -m "run ci"
+            $ git push
+            ```
