@@ -1,6 +1,5 @@
 name: Update Dependencies
 on:
-  push:
   schedule:
     - cron: "38 17 26 * *"
 
