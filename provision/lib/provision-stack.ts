@@ -25,7 +25,7 @@ export class ProvisionStack extends cdk.Stack {
 
     const role = Role.fromRoleName(this, "DeployRole", "DeployRole");
     role.attachInlinePolicy(
-      new Policy(this, "DeployPolicy", {
+      new Policy(this, "LambdaDeployPolicy", {
         statements: [
           new PolicyStatement({
             actions: ["lambda:UpdateFunctionCode"],
