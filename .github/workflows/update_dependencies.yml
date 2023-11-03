@@ -24,11 +24,13 @@ jobs:
         run: |
           npx npm-check-updates -u
           npm install
+          npm audit fix
       - name: update provision/package.json
         working-directory: provision
         run: |
           npx npm-check-updates -u
           npm install
+          npm audit fix
 
       - uses: peter-evans/create-pull-request@v5
         with:
