@@ -5,7 +5,7 @@ import { Architecture } from "aws-cdk-lib/aws-lambda";
 import { RetentionDays } from "aws-cdk-lib/aws-logs";
 import { Construct } from "constructs";
 
-export class DeploymentsStack extends cdk.Stack {
+export class ProvisionStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 

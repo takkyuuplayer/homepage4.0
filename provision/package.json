@@ -1,8 +1,8 @@
 {
-  "name": "deployments",
+  "name": "homepage4.0",
   "version": "0.1.0",
   "bin": {
-    "deployments": "bin/deployments.js"
+    "provision": "bin/provision.js"
   },
   "scripts": {
     "build": "tsc",
