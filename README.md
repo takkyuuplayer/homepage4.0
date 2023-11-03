@@ -8,7 +8,8 @@ Homepage 4.0 following [AWS SAM](https://github.com/awslabs/serverless-applicati
 
 ### Backend
 
-- [AWS Serverless Application Model](https://github.com/awslabs/serverless-application-model)
+- [AWS Lambda function handler in Go \- AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html)
+- [Using AWS Lambda with Amazon API Gateway \- AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway.html)
 - [The Go Programming Language](https://golang.org/)
 
 ### Frontend
@@ -19,5 +20,4 @@ Homepage 4.0 following [AWS SAM](https://github.com/awslabs/serverless-applicati
 
 ### Deployment
 
-- [Workflows \- CircleCI](https://circleci.com/docs/2.0/workflows/)
 - [AWS Command Line Interface](https://docs.aws.amazon.com/cli/index.html)
