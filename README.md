@@ -1,4 +1,4 @@
-[CI](https://github.com/takkyuuplayer/ts-exercise/workflows/CI/badge.svg)
+[CI](https://github.com/takkyuuplayer/homepage4.0/workflows/CI/badge.svg)
 
 # homepage 4.0
 
