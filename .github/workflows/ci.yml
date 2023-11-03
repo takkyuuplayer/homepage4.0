@@ -47,7 +47,7 @@ jobs:
           name: build
       - uses: actions/download-artifact@v3
         with:
-          name: web/public
+          name: public
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           audience: sts.amazonaws.com.cn
