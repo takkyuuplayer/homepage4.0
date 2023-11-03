@@ -53,4 +53,7 @@ jobs:
           audience: sts.amazonaws.com
           aws-region: ap-northeast-1
           role-to-assume: ${{ secrets.AWS_DEPLOYMENT_ROLE }}
-      - run: make deploy
+      - run: |
+          ls build
+          ls web/public
+          make deploy
