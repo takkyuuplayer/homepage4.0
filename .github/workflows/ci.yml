@@ -50,7 +50,7 @@ jobs:
           name: public
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          audience: sts.amazonaws.com.cn
+          audience: sts.amazonaws.com
           aws-region: ap-northeast-1
           role-to-assume: ${{ secrets.AWS_DEPLOYMENT_ROLE }}
       - run: make deploy
