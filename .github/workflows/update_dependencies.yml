@@ -13,6 +13,11 @@ jobs:
         with:
           node-version: 20
           cache: npm
+      - name: update go.mod
+        run: |
+          go get -u
+          go mod tidy
+          go mod download all
       - name: update web/package.json
         working-directory: web
         run: |
