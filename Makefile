@@ -3,6 +3,7 @@
 export ROOT=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 
 build: feed.go
+	@mkdir -p ${ROOT}/build
 	CGO_ENABLED=0 GOARCH=arm64 GOOS=linux go build -tags lambda.norpc -o ./build/bootstrap
 
 deploy:
