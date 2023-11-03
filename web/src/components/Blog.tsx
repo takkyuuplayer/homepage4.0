@@ -19,7 +19,7 @@ export default () => {
 
   React.useEffect(() => {
     fetch(
-      'https://o52wfywme7.execute-api.ap-northeast-1.amazonaws.com/prod/feed'
+      'https://mkbe305n1f.execute-api.ap-northeast-1.amazonaws.com/prod/feed'
     )
       .then((res) => res.json())
       .then((body) => setFeeds(body.data))
