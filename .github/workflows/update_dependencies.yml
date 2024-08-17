@@ -22,13 +22,15 @@ jobs:
       - name: update web/package.json
         working-directory: web
         run: |
-          npx npm-check-updates -u
+          npx npm-check-updates -u -x @types/node
+          npx npm-check-updates -u --target minor @types/node
           npm install
           npm audit fix
       - name: update provision/package.json
         working-directory: provision
         run: |
-          npx npm-check-updates -u
+          npx npm-check-updates -u -x @types/node
+          npx npm-check-updates -u --target minor @types/node
           npm install
           npm audit fix
 
