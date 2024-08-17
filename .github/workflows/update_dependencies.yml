@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
           go-version-file: "go.mod"
       - uses: actions/setup-node@v4
@@ -22,17 +22,19 @@ jobs:
       - name: update web/package.json
         working-directory: web
         run: |
-          npx npm-check-updates -u
+          npx npm-check-updates -u -x @types/node
+          npx npm-check-updates -u --target minor @types/node
           npm install
           npm audit fix
       - name: update provision/package.json
         working-directory: provision
         run: |
-          npx npm-check-updates -u
+          npx npm-check-updates -u -x @types/node
+          npx npm-check-updates -u --target minor @types/node
           npm install
           npm audit fix
 
-      - uses: peter-evans/create-pull-request@v5
+      - uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update dependencies"
