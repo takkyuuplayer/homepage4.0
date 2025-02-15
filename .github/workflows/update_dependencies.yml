@@ -3,6 +3,8 @@ on:
   schedule:
     - cron: "38 17 26 * *"
 
+env:
+  NODE_MINOR_UPDATES: "@types/node"
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -13,7 +15,7 @@ jobs:
           go-version-file: "go.mod"
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - name: update go.mod
         run: |
           go get -u
@@ -22,16 +24,16 @@ jobs:
       - name: update web/package.json
         working-directory: web
         run: |
-          npx npm-check-updates -u -x @types/node
-          npx npm-check-updates -u --target minor @types/node
-          npm install
+          npx npm-check-updates -u -x ${NODE_MINOR_UPDATES}
+          npx npm-check-updates -u --target minor ${NODE_MINOR_UPDATES}
+          npm update
           npm audit fix
       - name: update provision/package.json
         working-directory: provision
         run: |
-          npx npm-check-updates -u -x @types/node
-          npx npm-check-updates -u --target minor @types/node
-          npm install
+          npx npm-check-updates -u -x ${NODE_MINOR_UPDATES}
+          npx npm-check-updates -u --target minor ${NODE_MINOR_UPDATES}
+          npm update
           npm audit fix
 
       - uses: peter-evans/create-pull-request@v6
