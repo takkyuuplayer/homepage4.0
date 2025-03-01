@@ -6,12 +6,13 @@ interface ILogoSize {
   height?: string
 }
 
-const Logo: React.FC<ILogoSize> = (props) => (
-  <img src={withPrefix(`img/logo-white.gif`)} alt="Logo" {...props} />
+const Logo: React.FC<ILogoSize> = ({ height = '50px', ...rest }) => (
+  <img
+    src={withPrefix(`img/logo-white.gif`)}
+    alt="Logo"
+    height={height}
+    {...rest}
+  />
 )
-
-Logo.defaultProps = {
-  height: '50px',
-}
 
 export default Logo
