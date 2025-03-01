@@ -15,7 +15,6 @@
     "gatsby-plugin-typescript": "^5.14.0",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.3",
-    "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^18.3.1",
