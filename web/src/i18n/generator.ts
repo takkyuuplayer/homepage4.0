@@ -25,12 +25,30 @@ class Generator {
       }
       return ret
     }, {})
+  private static deepMerge(target: any, ...sources: any[]): any {
+    if (!sources.length) return target;
+    const source = sources.shift();
+
+    if (typeof target === 'object' && typeof source === 'object') {
+      for (const key in source) {
+        if (typeof source[key] === 'object') {
+          if (!target[key]) Object.assign(target, { [key]: {} });
+          Generator.deepMerge(target[key], source[key]);
+        } else {
+          Object.assign(target, { [key]: source[key] });
+        }
+      }
+    }
+
+    return Generator.deepMerge(target, ...sources);
+  }
+
   public static tsvToI18n(tsv: string) {
     const rows = tsv.split('\n').map((line: string) => line.trim().split('\t'))
     const header = rows.shift()
     const locales = Generator.getLocales(header)
 
-    return Object.assign(
+    return Generator.deepMerge(
       {},
       ...rows.map((row) =>
         Generator.rowToJSON(Object.fromEntries(header.map((key, index) => [key, row[index]])) as IRow, locales)
