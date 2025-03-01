@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useTranslation } from 'react-i18next'
-import useLocalStorage from 'use-local-storage'
+import useSWR from 'swr'
 import createHistoryItems from './HistoryItems'
 
 interface IBlogFeed {
@@ -10,20 +10,20 @@ interface IBlogFeed {
   [attr: string]: string
 }
 
+const fetcher = (url: string) =>
+  fetch(url)
+    .then((res) => res.json())
+    .then((res) => res.data)
+
 export default () => {
-  const [feeds, setFeeds] = useLocalStorage<ReadonlyArray<IBlogFeed>>(
-    'blog',
-    []
+  const { data: feeds, error } = useSWR<ReadonlyArray<IBlogFeed>>(
+    'https://mkbe305n1f.execute-api.ap-northeast-1.amazonaws.com/prod/feed',
+    fetcher
   )
   const { t } = useTranslation()
 
-  React.useEffect(() => {
-    fetch(
-      'https://mkbe305n1f.execute-api.ap-northeast-1.amazonaws.com/prod/feed'
-    )
-      .then((res) => res.json())
-      .then((body) => setFeeds(body.data))
-  }, [])
+  if (error) return <div>{t('Failed to load')}</div>
+  if (!feeds) return <div>{t('Loading...')}</div>
 
   return (
     <article className="history">
