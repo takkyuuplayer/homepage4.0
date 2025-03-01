@@ -16,28 +16,34 @@ const fetcher = (url: string) =>
     .then((res) => res.data)
 
 export default () => {
-  const { data: feeds, error } = useSWR<ReadonlyArray<IBlogFeed>>(
-    'https://mkbe305n1f.execute-api.ap-northeast-1.amazonaws.com/prod/feed',
-    fetcher
-  )
   const { t } = useTranslation()
-
-  if (error) return <div>{t('Failed to load')}</div>
-  if (!feeds) return <div>{t('Loading...')}</div>
 
   return (
     <article className="history">
       <h4>{t('navigation.blog')}</h4>
       <hr />
       <ul className="list-unstyled">
-        {createHistoryItems(
-          feeds.map((feed) => ({
-            date: new Date(feed.published),
-            title: feed.title,
-            url: feed.link,
-          }))
-        )}
+        <BlogEntries />
       </ul>
     </article>
+  )
+}
+
+const BlogEntries = () => {
+  const { t } = useTranslation()
+  const { data: feeds, error } = useSWR<ReadonlyArray<IBlogFeed>>(
+    'https://mkbe305n1f.execute-api.ap-northeast-1.amazonaws.com/prod/feed',
+    fetcher
+  )
+
+  if (error) return <li>{t('Failed to load')}</li>
+  if (!feeds) return <li>{t('Loading...')}</li>
+
+  return createHistoryItems(
+    feeds.map((feed) => ({
+      date: new Date(feed.published),
+      title: feed.title,
+      url: feed.link,
+    }))
   )
 }
