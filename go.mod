@@ -1,6 +1,9 @@
 module github.com/takkyuuplayer/homepage4.0
 
-go 1.23
+go 1.24
+
+toolchain go1.24.1
+
 require (
 	github.com/aws/aws-lambda-go v1.47.0
 	github.com/mmcdole/gofeed v1.3.0
