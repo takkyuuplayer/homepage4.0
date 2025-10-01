@@ -61,7 +61,7 @@ jobs:
           name: public
           path: web/public
 
-      - uses: aws-actions/configure-aws-credentials@v4
+      - uses: aws-actions/configure-aws-credentials@v5
         with:
           audience: sts.amazonaws.com
           aws-region: ap-northeast-1
