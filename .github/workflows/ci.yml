@@ -52,11 +52,11 @@ jobs:
       - frontend-test
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: build
           path: build
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with:
           name: public
           path: web/public
