@@ -4,6 +4,31 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
-    reviewers:
-      - takkyuuplayer
+      interval: "cron"
+      cronjob: "0 0 1 * *"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+  - package-ecosystem: "gomod"
+    directories:
+      - "**/*"
+    schedule:
+      interval: "cron"
+      cronjob: "0 0 1 * *"
+    groups:
+      app:
+        patterns:
+          - "*"
+  - package-ecosystem: "npm"
+    directories:
+      - "**/*"
+    schedule:
+      interval: "cron"
+      cronjob: "0 0 1 * *"
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+    groups:
+      app:
+        patterns: ["*"]
