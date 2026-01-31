@@ -1,5 +1,11 @@
 version: 2
 
+multi-ecosystem-groups:
+  app:
+    schedule:
+      interval: "cron"
+      cronjob: "0 0 1 * *"
+
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -13,22 +19,15 @@ updates:
   - package-ecosystem: "gomod"
     directories:
       - "**/*"
-    schedule:
-      interval: "cron"
-      cronjob: "0 0 1 * *"
-    groups:
-      app:
-        patterns:
-          - "*"
+    multi-ecosystem-group: app
+    patterns:
+      - "*"
   - package-ecosystem: "npm"
     directories:
       - "**/*"
-    schedule:
-      interval: "cron"
-      cronjob: "0 0 1 * *"
     ignore:
       - dependency-name: "@types/node"
         update-types: ["version-update:semver-major"]
-    groups:
-      app:
-        patterns: ["*"]
+    multi-ecosystem-group: app
+    patterns:
+      - "*"
