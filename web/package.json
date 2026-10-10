@@ -27,7 +27,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "i18n": "ts-node scripts/generate_locale.ts --in etc/i18n/homepage.tsv --out src/i18n/locales.json",
+    "i18n": "node --import tsx scripts/generate_locale.ts --in etc/i18n/homepage.tsv --out src/i18n/locales.json",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "biome check --write .",
@@ -42,7 +42,7 @@
     "@types/react-bootstrap": "^0.32.37",
     "@types/react-helmet": "^6.1.11",
     "commander": "^13.1.0",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
     "typescript": "^5.7.3",
     "vitest": "5.0.3"
   },
