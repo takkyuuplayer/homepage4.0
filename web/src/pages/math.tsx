@@ -7,11 +7,11 @@ import Layout from '../components/layout'
 export default () => {
   const { t } = useTranslation()
   const questions = [...Array(18).keys()].map((num: number) => {
-    const key = num < 9 ? '0' + (num + 1) : num + 1
+    const key = String(num + 1).padStart(2, '0')
     return (
       <tr key={key}>
         <td>
-          <img src={withPrefix(`math/toi${key}.png`)} />
+          <img src={withPrefix(`math/toi${key}.png`)} alt={`Q${key}`} />
         </td>
         <td className="align-middle">
           <a href={withPrefix(`math/ans${key}.pdf`)}>{t('math.answer')}</a>

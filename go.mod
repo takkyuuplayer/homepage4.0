@@ -1,6 +1,6 @@
 module github.com/takkyuuplayer/homepage4.0
 
-go 1.25.0
+go 1.27
 
 require (
 	github.com/aws/aws-lambda-go v1.52.0

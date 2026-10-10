@@ -2,10 +2,10 @@ import * as React from 'react'
 import Table from 'react-bootstrap/Table'
 import { useTranslation } from 'react-i18next'
 import AppLink from '../components/AppLink'
-import apps, { IAppData } from '../data/apps'
+import apps, { type IAppData } from '../data/apps'
 import { FormatDate } from './DateTime'
 
-const appToTableRow: React.FunctionComponent<IAppData> = (app) => {
+const AppRow: React.FunctionComponent<IAppData> = (app) => {
   const { t } = useTranslation()
   return (
     <tr key={app.title} className="table-active">
@@ -15,6 +15,7 @@ const appToTableRow: React.FunctionComponent<IAppData> = (app) => {
       <td className="align-middle">{app.title}</td>
       <td className="align-middle">
         <div
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: descriptions in our own translation file contain HTML links
           dangerouslySetInnerHTML={{
             __html: t(`app.${app.title}`),
           }}
@@ -49,7 +50,9 @@ const InactiveApps = () => {
       <tbody>
         {apps
           .filter((app) => app.status === 'inactive')
-          .map((app) => appToTableRow(app))}
+          .map((app) => (
+            <AppRow key={app.title} {...app} />
+          ))}
       </tbody>
     </Table>
   )

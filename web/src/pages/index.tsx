@@ -3,8 +3,8 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Blog from '../components/Blog'
 import History from '../components/History'
-import TwitterTimeline from '../components/TwitterTimeline'
 import Layout from '../components/layout'
+import TwitterTimeline from '../components/TwitterTimeline'
 
 const IndexPage = () => {
   return (

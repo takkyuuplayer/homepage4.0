@@ -1,5 +1,5 @@
+import * as fs from 'node:fs'
 import { program } from 'commander'
-import * as fs from 'fs'
 import Generator from '../src/i18n/generator'
 
 program

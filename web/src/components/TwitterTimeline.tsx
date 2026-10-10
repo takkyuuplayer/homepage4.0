@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
 interface TwitterTimelineProps {
-  username: string;
+  username: string
 }
 
 const TwitterTimeline: React.FC<TwitterTimelineProps> = ({ username }) => {
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://platform.twitter.com/widgets.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
+    const script = document.createElement('script')
+    script.src = 'https://platform.twitter.com/widgets.js'
+    script.async = true
+    document.body.appendChild(script)
+  }, [])
 
   return (
     <a
@@ -19,7 +19,7 @@ const TwitterTimeline: React.FC<TwitterTimelineProps> = ({ username }) => {
     >
       Tweets by {username}
     </a>
-  );
-};
+  )
+}
 
-export default TwitterTimeline;
+export default TwitterTimeline

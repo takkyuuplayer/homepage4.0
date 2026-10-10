@@ -2,9 +2,9 @@ import * as React from 'react'
 import Table from 'react-bootstrap/Table'
 import { useTranslation } from 'react-i18next'
 import AppLink from '../components/AppLink'
-import apps, { AppStatuses, IAppData } from '../data/apps'
+import apps, { AppStatuses, type IAppData } from '../data/apps'
 
-const appToTableRow: React.FC<IAppData> = (app) => {
+const AppRow: React.FC<IAppData> = (app) => {
   const { t } = useTranslation()
   return (
     <tr key={app.title}>
@@ -14,6 +14,7 @@ const appToTableRow: React.FC<IAppData> = (app) => {
       <td className="align-middle">{app.title}</td>
       <td className="align-middle">
         <div
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: descriptions in our own translation file contain HTML links
           dangerouslySetInnerHTML={{
             __html: t(`app.${app.title}`),
           }}
@@ -37,7 +38,9 @@ const ActiveApps = () => {
       <tbody>
         {apps
           .filter((app) => app.status === AppStatuses.active)
-          .map((app) => appToTableRow(app))}
+          .map((app) => (
+            <AppRow key={app.title} {...app} />
+          ))}
       </tbody>
     </Table>
   )
