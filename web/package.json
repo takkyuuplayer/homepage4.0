@@ -4,22 +4,22 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.7.2",
-    "@fortawesome/free-brands-svg-icons": "^6.7.2",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2",
-    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@fortawesome/fontawesome-svg-core": "^7.3.1",
+    "@fortawesome/free-brands-svg-icons": "^7.3.1",
+    "@fortawesome/free-solid-svg-icons": "^7.3.1",
+    "@fortawesome/react-fontawesome": "^3.5.0",
     "bootstrap": "^5.3.3",
     "gatsby": "^5.14.1",
     "gatsby-link": "^5.14.1",
     "gatsby-plugin-react-helmet": "^6.14.0",
     "gatsby-plugin-typescript": "^5.14.0",
-    "i18next": "^24.2.2",
+    "i18next": "^26.4.3",
     "i18next-browser-languagedetector": "^8.0.3",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
-    "react-i18next": "^15.4.0",
+    "react-i18next": "^17.0.16",
     "swr": "^2.3.2"
   },
   "keywords": [
@@ -35,16 +35,15 @@
     "lint": "biome check ."
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.15",
+    "@biomejs/biome": "^2.5.15",
     "@types/bootstrap": "^5.2.10",
     "@types/node": "^24",
     "@types/react": "^18.3.18",
-    "@types/react-bootstrap": "^0.32.37",
     "@types/react-helmet": "^6.1.11",
-    "commander": "^13.1.0",
+    "commander": "^15.0.0",
     "tsx": "^4.23.15",
     "typescript": "^5.7.3",
-    "vitest": "5.0.3"
+    "vitest": "^5.0.3"
   },
   "repository": {
     "type": "git",
