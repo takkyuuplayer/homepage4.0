@@ -8,15 +8,12 @@ import { useTranslation } from 'react-i18next'
 import '../i18n/i18n'
 import Footer from './Footer'
 import Header from './Header'
-
-/* tslint:disable no-var-requires */
-require('./index.css')
-/* tslint:enable no-var-requires */
+import './index.css'
 
 const NEW_SITE_URL = 'https://takkyuuplayer.com'
 
 interface ILayoutProps {
-  children: any
+  children: React.ReactNode
 }
 
 const Layout = ({ children }: ILayoutProps) => {

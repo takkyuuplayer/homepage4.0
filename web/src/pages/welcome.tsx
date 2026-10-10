@@ -38,19 +38,16 @@ const serverHistory = [
   },
 ]
 
-const Histories = serverHistory
-  .map((link) => (
+const Histories = serverHistory.flatMap((link, index) => {
+  const anchor = (
     <a key={link.url} href={link.url} title={link.title}>
       {link.title}
     </a>
-  ))
-  .reduce(
-    (prev, elem, idx) =>
-      prev.length === 0
-        ? [elem]
-        : [...prev, <span key={idx}> &rarr; </span>, elem],
-    []
   )
+  return index === 0
+    ? [anchor]
+    : [<span key={`arrow-${link.url}`}> &rarr; </span>, anchor]
+})
 
 export default () => {
   const { t } = useTranslation()
